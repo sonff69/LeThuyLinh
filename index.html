@@ -20,10 +20,10 @@
             --primary-pink: #ffb6c1;
             --accent-purple: #9b5de5;
             --dreamy-cyan: #00f5d4;
-            --bg-glass: rgba(24, 18, 36, 0.45); /* Làm đậm hơn để đảm bảo tương phản chữ hoàn hảo */
-            --bg-glass-heavy: rgba(20, 14, 30, 0.65);
+            --bg-glass: rgba(24, 18, 36, 0.45); /* Độ tương phản màu tối giúp chữ cực kỳ sắc nét */
+            --bg-glass-heavy: rgba(18, 12, 28, 0.75);
             --border-glass: rgba(255, 255, 255, 0.2);
-            --shadow-glow: 0 8px 32px 0 rgba(155, 93, 229, 0.25);
+            --shadow-glow: 0 8px 32px 0 rgba(155, 93, 229, 0.3);
             --font-main: 'Quicksand', sans-serif;
             --font-title: 'Playfair Display', serif;
         }
@@ -37,7 +37,7 @@
             position: relative;
         }
 
-        /* Ambient Dream Overlay */
+        /* Ambient Dream Background Overlay */
         body::before {
             content: '';
             position: fixed;
@@ -45,12 +45,12 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(135deg, rgba(155, 93, 229, 0.2), rgba(255, 182, 193, 0.2));
+            background: linear-gradient(135deg, rgba(155, 93, 229, 0.25), rgba(255, 182, 193, 0.2));
             pointer-events: none;
             z-index: 0;
         }
 
-        /* Canvas for Particle Effects */
+        /* Floating Blossom Particle Canvas */
         #petal-canvas {
             position: fixed;
             top: 0;
@@ -61,7 +61,7 @@
             z-index: 1;
         }
 
-        /* --- Custom Scrollbar --- */
+        /* --- Scrollbar Customization --- */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -76,7 +76,7 @@
             background: var(--accent-purple);
         }
 
-        /* --- Header & Navigation Bar --- */
+        /* --- Navigation Bar --- */
         header {
             position: fixed;
             top: 0;
@@ -355,7 +355,7 @@
             box-shadow: 0 6px 25px rgba(155, 93, 229, 0.6);
         }
 
-        /* --- Project Gallery (Assignments) --- */
+        /* --- Interactive Category Menu --- */
         .project-tabs {
             display: flex;
             justify-content: center;
@@ -380,6 +380,7 @@
             transform: scale(1.05);
         }
 
+        /* --- Assignments List Grid --- */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -459,7 +460,7 @@
             color: #1a1a1a;
         }
 
-        /* --- Detailed Modal Popups (Mức 4 Requirement) --- */
+        /* --- Detailed Modals Styling --- */
         .modal {
             position: fixed;
             top: 0;
@@ -552,8 +553,8 @@
             color: #e8dbfc;
         }
 
-        /* --- XỊN XÒ INTERACTIVE MINI-APPS INSIDE MODALS --- */
-        /* 1. Step-by-step Interactive File System Simulator for Assignment 1 */
+        /* --- INTERACTIVE MODULES --- */
+        /* 1. Step-by-step Interactive File System Simulator (Assignment 1) */
         .step-simulator {
             background: rgba(15, 10, 22, 0.7);
             border: 1px solid var(--border-glass);
@@ -613,7 +614,7 @@
             cursor: not-allowed;
         }
 
-        /* 2. Interactive SLA Query & Citation Explorer for Assignment 2 */
+        /* 2. Interactive SLA Literature Evaluator (Assignment 2) */
         .sla-explorer {
             background: rgba(15, 10, 22, 0.7);
             border: 1px solid var(--border-glass);
@@ -622,22 +623,25 @@
             margin: 20px 0;
         }
         .sla-tabs {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;
-            overflow-x: auto;
-            padding-bottom: 10px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
             margin-bottom: 15px;
+        }
+        @media (max-width: 600px) {
+            .sla-tabs { grid-template-columns: repeat(2, 1fr); }
         }
         .sla-tab-btn {
             background: transparent;
             border: 1px solid var(--border-glass);
             color: #ffffff;
-            padding: 6px 12px;
+            padding: 8px;
             border-radius: 15px;
             cursor: pointer;
             font-size: 0.85rem;
-            white-space: nowrap;
+            text-align: center;
             transition: all 0.3s;
         }
         .sla-tab-btn.active, .sla-tab-btn:hover {
@@ -646,17 +650,38 @@
         }
         .sla-details-box {
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        /* 3. Side-by-side Prompt Comparison for Assignment 3 */
+        /* 3. Side-by-side Prompt Comparison Grid (Assignment 3) */
+        .prompt-task-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .prompt-task-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-glass);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .prompt-task-btn.active, .prompt-task-btn:hover {
+            background: var(--dreamy-cyan);
+            color: #1a1a1a;
+            border-color: var(--dreamy-cyan);
+        }
         .sandbox-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 20px;
             margin: 20px 0;
         }
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .sandbox-container { grid-template-columns: 1fr; }
         }
         .sandbox-box {
@@ -682,11 +707,11 @@
             color: #e8dbfc;
             white-space: pre-wrap;
             font-family: monospace;
-            height: 180px;
+            height: 250px;
             overflow-y: auto;
         }
 
-        /* 4. Interactive Manifesto Checklist for Assignment 6 */
+        /* 4. Interactive Manifesto Checklist (Assignment 6) */
         .manifesto-checklist {
             list-style: none !important;
             margin: 20px 0 !important;
@@ -1055,7 +1080,7 @@
         </div>
     </div>
 
-    <!-- Modal 2 (SLA Explorer & Matrix) -->
+    <!-- Modal 2 (SLA Explorer & Matrix - Đầy đủ 12 bài báo) -->
     <div class="modal" id="modal-project2">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('project2')">&times;</button>
@@ -1067,18 +1092,29 @@
                     "second language acquisition" AND ("input hypothesis" OR "interaction hypothesis") -intitle:"review" filetype:pdf
                 </div>
 
-                <!-- Interactive SLA Explorer -->
+                <!-- Interactive SLA Explorer (12 nguồn học liệu chi tiết) -->
                 <div class="sla-explorer">
                     <div class="sla-tabs">
-                        <button class="sla-tab-btn active" onclick="showSla('krashen')">Krashen (1985)</button>
-                        <button class="sla-tab-btn" onclick="showSla('long')">Long (1996)</button>
-                        <button class="sla-tab-btn" onclick="showSla('gass')">Gass & Mackey (2007)</button>
-                        <button class="sla-tab-btn" onclick="showSla('yadavalli')">Yadavalli (2023)</button>
+                        <button class="sla-tab-btn active" onclick="showSla(1)">1. Krashen ('85)</button>
+                        <button class="sla-tab-btn" onclick="showSla(2)">2. Long ('96)</button>
+                        <button class="sla-tab-btn" onclick="showSla(3)">3. Gass ('07)</button>
+                        <button class="sla-tab-btn" onclick="showSla(4)">4. Schwartz ('96)</button>
+                        <button class="sla-tab-btn" onclick="showSla(5)">5. Slabakova ('02)</button>
+                        <button class="sla-tab-btn" onclick="showSla(6)">6. Slabakova ('03)</button>
+                        <button class="sla-tab-btn" onclick="showSla(7)">7. Yadavalli ('23)</button>
+                        <button class="sla-tab-btn" onclick="showSla(8)">8. Saville ('12)</button>
+                        <button class="sla-tab-btn" onclick="showSla(9)">9. Lightbown ('13)</button>
+                        <button class="sla-tab-btn" onclick="showSla(10)">10. Larsen ('91)</button>
+                        <button class="sla-tab-btn" onclick="showSla(11)">11. Ellis ('97)</button>
+                        <button class="sla-tab-btn" onclick="showSla(12)">12. Meisel ('11)</button>
                     </div>
                     <div class="sla-details-box" id="sla-detail-content">
-                        <strong>The Input Hypothesis: Issues and Implications (1985):</strong> Đề xuất lý thuyết đầu vào dễ hiểu ($i+1$) mang tính định hình cách hiểu hiện đại về SLA. 
-                        <br><br>
-                        <em>Đánh giá độ tin cậy:</em> Trung bình - Khá. Tài liệu có uy tín kinh điển cao nhưng yếu tố thực nghiệm còn hạn chế, các trích dẫn mang tính diễn giải chủ quan, khó đo lường chính xác các cơ chế nhận thức sinh học.
+                        <!-- Nguồn 1 mặc định -->
+                        <strong>1. Krashen, S. (1985). The Input Hypothesis: Issues and Implications.</strong><br>
+                        <em>Cơ quan xuất bản:</em> Longman (Nhà xuất bản uy tín lâu đời của Anh, thuộc Pearson).<br>
+                        <em>Phương pháp nghiên cứu:</em> Nghiên cứu lý thuyết (theoretical approach) kết hợp literature review, không có thực nghiệm trực tiếp.<br>
+                        <em>Độ tin cậy trích dẫn:</em> Khá cao, dựa trên nhiều nghiên cứu lý thuyết trong ngành ngôn ngữ học, tuy nhiên nhiều trích dẫn mang tính diễn giải chủ quan để hỗ trợ quan điểm cá nhân hơn là phân tích dữ liệu thực nghiệm một cách chặt chẽ.<br>
+                        <em>Tính cập nhật:</em> Trung bình (Công trình mang tính kinh điển, nền tảng nhưng đã xuất hiện gần 40 năm trước, cần cập nhật thêm các nghiên cứu mới về tương tác và output để đảm bảo tính toàn diện).
                     </div>
                 </div>
 
@@ -1088,7 +1124,7 @@
         </div>
     </div>
 
-    <!-- Modal 3 (Prompt Sandbox Toggler) -->
+    <!-- Modal 3 (Prompt Sandbox Toggler - Đầy đủ 3 Tác vụ x 3 Cấp độ) -->
     <div class="modal" id="modal-project3">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('project3')">&times;</button>
@@ -1097,20 +1133,26 @@
                 <h3>Tư duy thiết kế Prompt chuyên sâu</h3>
                 <p>Tương tác hiệu quả với AI không phải là đặt những câu hỏi ngẫu nhiên, mà là thiết kế một "bản hướng dẫn hành vi" chặt chẽ giúp AI định hình phong cách phản hồi.</p>
                 
-                <!-- Interactive Comparison Sandbox -->
+                <!-- Selector cho 3 Tác vụ khác nhau -->
+                <div class="prompt-task-selector">
+                    <button class="prompt-task-btn active" onclick="switchPromptTask(1)">Tác vụ 1 (Tóm tắt)</button>
+                    <button class="prompt-task-btn" onclick="switchPromptTask(2)">Tác vụ 2 (Giải thích)</button>
+                    <button class="prompt-task-btn" onclick="switchPromptTask(3)">Tác vụ 3 (Đặt câu hỏi)</button>
+                </div>
+
+                <!-- Sandbox Container -->
                 <div class="sandbox-container">
                     <div class="sandbox-box">
-                        <h4><i class="fas fa-times-circle" style="color:#ff6b6b"></i> Prompt Cơ Bản (Thô)</h4>
-                        <pre>Giải thích khái niệm chủ nghĩa duy vật lịch sử.</pre>
-                        <p style="font-size:0.85rem; margin-top:10px; color:#ff6b6b;"><em>Hạn chế:</em> Phản hồi chung chung, khô khan, thiếu cấu trúc sư phạm và ngữ cảnh phù hợp cho người học.</p>
+                        <h4 id="box-prompt-title-left"><i class="fas fa-times-circle" style="color:#ff6b6b"></i> Prompt Cơ Bản</h4>
+                        <pre id="box-prompt-text-left">Tóm tắt bài đọc The Communist Manifesto</pre>
                     </div>
                     <div class="sandbox-box">
-                        <h4><i class="fas fa-check-circle" style="color:var(--dreamy-cyan)"></i> Prompt Nâng Cao (SMART)</h4>
-                        <pre>Bạn là một giảng viên đại học chuyên ngành Triết học Mác - Lênin. Hãy giải thích khái niệm "Chủ nghĩa duy vật lịch sử" cho sinh viên năm nhất theo cách logic, có hệ thống và dễ tiếp cận. Hãy thực hiện theo các bước sau:
-1. Đưa ra định nghĩa ngắn gọn, chính xác.
-2. Phân tích các khái niệm cốt lõi (phương thức sản xuất, lực lượng sản xuất, quan hệ sản xuất).
-3. Đưa ra 2 ví dụ liên quan đến tác động của nền kinh tế số và AI để minh họa.</pre>
-                        <p style="font-size:0.85rem; margin-top:10px; color:var(--dreamy-cyan);"><em>Ưu điểm:</em> Kết hợp Role Prompting và Chain-of-Thought tạo ra phản hồi sâu sắc, cấu trúc hoàn hảo.</p>
+                        <h4 id="box-prompt-title-right"><i class="fas fa-check-circle" style="color:var(--dreamy-cyan)"></i> Prompt Nâng Cao (SMART)</h4>
+                        <pre id="box-prompt-text-right">Bạn là một giảng viên đại học chuyên hướng dẫn kỹ năng đọc hiểu và phân tích học thuật. Nhiệm vụ của bạn là tóm tắt bài đọc học thuật dưới đây theo cách rõ ràng, logic và dễ hiểu đối với sinh viên đại học.
+Hãy thực hiện theo các bước sau:
+Bước 1: Xác định chủ đề chính của bài đọc và mục đích của tác giả.
+Bước 2: Chia bài viết thành các luận điểm hoặc phần nội dung quan trọng.
+... (Xem chi tiết bằng cách click chọn tác vụ)</pre>
                     </div>
                 </div>
 
@@ -1151,14 +1193,15 @@
                 <p>Dự án "Trí tuệ nhân tạo trong đời sống hằng ngày" hướng đến việc trực quan hóa sức mạnh của công nghệ thông qua một bài thuyết trình slide chuyên nghiệp, mang phong cách hiện đại và tối giản.</p>
                 <h3>Quy trình phối hợp các công cụ AI</h3>
                 <p><strong>Bước 1: Khởi tạo nội dung cùng ChatGPT</strong><br>
-                Mình đã sử dụng ChatGPT để phân tích cấu trúc bài viết, phát triển các luận điểm lớn về ứng dụng AI trong Giao tiếp, Giáo dục, Y tế, và Mua sắm giải trí, đồng thời soạn thảo kịch bản thuyết trình chi tiết tương đương 15 phút nói.</p>
+                Mình đã sử dụng ChatGPT để phân tích cấu trúc bài viết, phát triển các luận điểm lớn về ứng dụng AI trong Giao tiếp, Giáo dục, Y tế, và Mua sắm giải trí, đồng thời soạn thảo kịch bản thuyết trình chi tiết tương đương 15 phút nói (khoảng 1.800–2.500 từ) với văn phong học thuật nhẹ nhàng, phù hợp cho sinh viên.</p>
                 <p><strong>Bước 2: Hiện thực hóa hình ảnh cùng Stable Diffusion</strong><br>
-                Thay vì sử dụng các hình ảnh có sẵn trên mạng, mình thiết kế các prompt chi tiết để Stable Diffusion tạo ra các hình ảnh 3D và vector đồng bộ cao cấp. Ví dụ:</p>
-                <div class="modal-prompt-box">
-                    A breathtaking futuristic smart city at sunset, ultra-modern skyscrapers covered with vertical gardens, autonomous flying vehicles, holographic advertisements, cinematic lighting, photorealistic, highly detailed, 8k resolution.
-                </div>
+                Thay vì sử dụng các hình ảnh có sẵn trên mạng, mình thiết kế các prompt chi tiết để Stable Diffusion tạo ra các hình ảnh 3D và vector đồng bộ cao cấp. Các tác phẩm nổi bật gồm:
+                <br><em>1. Thành phố tương lai:</em> "A breathtaking futuristic smart city at sunset, ultra-modern skyscrapers covered with vertical gardens, autonomous flying vehicles, holographic advertisements, intelligent transportation systems, cinematic lighting, photorealistic, highly detailed, 8k resolution."
+                <br><em>2. AI hỗ trợ học tập:</em> "A university student studying with an advanced AI assistant displayed as a holographic interface, digital books floating in the air, modern classroom, photorealistic, soft lighting, 8k."
+                <br><em>3. AI trong y tế:</em> "A modern hospital where artificial intelligence assists doctors in diagnosing diseases, futuristic medical screens, highly realistic, cinematic lighting, 8k."
+                </p>
                 <p><strong>Bước 3: Thiết kế slide chuyên nghiệp trên Canva AI</strong><br>
-                Sử dụng các tính năng thiết kế tự động của Canva để chuyển hóa văn bản thành các slide tinh gọn, áp dụng bảng màu hiện đại (Xanh dương, Tím, Cyan) với tỷ lệ vàng về khoảng trắng và phân bổ hình ảnh hợp lý (chiếm 40-50% diện tích slide).</p>
+                Sử dụng các tính năng thiết kế tự động của Canva để chuyển hóa văn bản thành các slide tinh gọn (khoảng 10 slide), áp dụng bảng màu hiện đại (Xanh dương, Tím, Cyan) với tỷ lệ vàng về khoảng trắng và phân bổ hình ảnh hợp lý (chiếm 40–50% diện tích slide).</p>
                 <h3>Vai trò mới của con người</h3>
                 <p>Quy trình này chứng minh rằng AI không làm lu mờ vai trò của con người mà thay đổi bản chất của nó. Vai trò của mình đã dịch chuyển từ "người thực thi thủ công" sang "concept director" - người định hướng thẩm mỹ, biên tập nội dung và chịu trách nhiệm tối cao cho chất lượng học thuật của sản phẩm.</p>
             </div>
@@ -1429,22 +1472,106 @@
             document.getElementById('btn-sim-next').disabled = (currentSimStep === 12);
         }
 
-        /* --- 2. INTERACTIVE SLA CITATION EXPLORER (ASSIGNMENT 2) --- */
+        /* --- 2. INTERACTIVE SLA CITATION EXPLORER (ASSIGNMENT 2 - ĐẦY ĐỦ 12 BÀI BÁO) --- */
         const slaData = {
-            krashen: "<strong>The Input Hypothesis: Issues and Implications (1985):</strong> Đề xuất lý thuyết đầu vào dễ hiểu ($i+1$) mang tính định hình cách hiểu hiện đại về SLA. <br><br><em>Đánh giá độ tin cậy:</em> Khá. Công trình có uy tín kinh điển cao nhưng yếu tố thực nghiệm còn hạn chế, các trích dẫn mang tính diễn giải chủ quan, cần đối chiếu thêm nhiều lý thuyết thực nghiệm bổ sung.",
-            long: "<strong>The Role of the Linguistic Environment in L2 Acquisition (1996):</strong> Đề xuất 'Interaction Hypothesis', đưa vào vai trò của sự đàm phán ý nghĩa (negotiation of meaning). <br><br><em>Đánh giá độ tin cậy:</em> Rất cao. Được xuất bản bởi nhà xuất bản danh tiếng Academic Press (nay thuộc Elsevier). Công trình kết hợp hoàn hảo giữa tổng hợp lý thuyết và phân tích dữ liệu thực nghiệm thực tiễn.",
-            gass: "<strong>Input, Interaction, and Output in Second Language Acquisition (2007):</strong> Tổng hợp toàn diện bộ ba nhân tố cốt lõi định hình năng lực thụ đắc ngôn ngữ.<br><br><em>Đánh giá độ tin cậy:</em> Rất cao. Ấn phẩm của Routledge được biên tập khắt khe với hệ thống trích dẫn đa nguồn phong phú từ các báo cáo thực địa lớp học trực quan.",
-            yadavalli: "<strong>Modeling Second Language Acquisition with BERT (2023):</strong> Đột phá vượt thời đại, kết hợp mô hình học máy BERT để mô phỏng tiến trình thụ đắc ngôn ngữ thứ hai của con người.<br><br><em>Đánh giá độ tin cậy:</em> Rất cao. Đăng tải tại kỷ yếu hội nghị uy tín của ACL (Association for Computational Linguistics) với quy trình phản biện kín nghiêm ngặt, phản ánh tính thời sự nóng hổi của kỷ nguyên công nghệ AI."
+            1: "<strong>1. Krashen, S. (1985). The Input Hypothesis: Issues and Implications.</strong><br><em>Cơ quan xuất bản:</em> Longman (Nhà xuất bản học thuật uy tín toàn cầu, thuộc Pearson).<br><em>Phương pháp:</em> Lý thuyết (theoretical approach), literature review.<br><em>Trích dẫn:</em> Độ tin cậy tương đối cao, dựa trên quan sát thực tế nhưng nhiều trích dẫn mang tính chủ quan để hỗ trợ quan điểm cá nhân hơn là phân tích dữ liệu thực nghiệm chặt chẽ.<br><em>Cập nhật:</em> Trung bình. Tài liệu xuất bản cách đây gần 40 năm. Nhiều lý thuyết thực nghiệm mới ra đời đã điều chỉnh quan điểm ban đầu của Krashen, đặc biệt là vai trò của tương tác và output.",
+            2: "<strong>2. Long, M. (1996). The role of the linguistic environment in second language acquisition.</strong><br><em>Cơ quan xuất bản:</em> Academic Press (Thuộc tập đoàn Elsevier uy tín toàn cầu).<br><em>Phương pháp:</em> Tổng hợp lý thuyết kết hợp phân tích thực nghiệm (theoretical synthesis + empirical evidence).<br><em>Trích dẫn:</em> Rất tin cậy, tham chiếu đến các học giả nổi bật và công trình thực nghiệm của các nhà ngôn ngữ học uy tín, phân tích so sánh chặt chẽ để phát triển Interaction Hypothesis.<br><em>Cập nhật:</em> Trung bình (Xuất bản gần 3 thập kỷ, cần kết hợp thêm các tài liệu mới về công nghệ và môi trường đa văn hóa).",
+            3: "<strong>3. Gass, S. & Mackey, A. (2007). Input, Interaction, and Output in Second Language Acquisition.</strong><br><em>Cơ quan xuất bản:</em> Routledge (Nhà xuất bản hàng đầu trong lĩnh vực khoa học xã hội và nhân văn).<br><em>Phương pháp:</em> Phối hợp tổng hợp lý thuyết và phân tích dữ liệu thực nghiệm (mixed approach).<br><em>Trích dẫn:</em> Độ tin cậy rất cao, tích hợp kết quả từ Krashen, Long, Swain và kiểm chứng qua chính các công trình thực nghiệm chất lượng cao của chính tác giả.<br><em>Cập nhật:</em> Khá cao (Đã xuất bản hơn 15 năm nhưng vẫn là tài liệu kinh điển, cần bổ sung thêm xu hướng học tập số hiện đại).",
+            4: "<strong>4. Schwartz, B. & Sprouse, R. (1996). L2 cognitive states and the Full Transfer/Full Access model.</strong><br><em>Cơ quan xuất bản:</em> Cambridge University Press (Nhà xuất bản học thuật danh tiếng bậc nhất thế giới).<br><em>Phương pháp:</em> Nghiên cứu lý thuyết kết hợp phân tích dữ liệu ngôn ngữ người học (theoretical analysis + learner data) trong ngữ pháp tạo sinh.<br><em>Trích dẫn:</em> Độ tin cậy cao, chủ yếu dựa trên các nghiên cứu nền tảng của Chomsky và trường phái UG.<br><em>Cập nhật:</em> Trung bình (Mô hình vẫn giữ giá trị kinh điển dài hạn nhưng thiếu tính cập nhật thực nghiệm của các xu hướng xã hội học mới).",
+            5: "<strong>5. Slabakova, R. (2002). Recent research on the acquisition of aspect.</strong><br><em>Cơ quan xuất bản:</em> SAGE Publications (Hàng đầu về khoa học xã hội, xuất bản tạp chí danh tiếng Second Language Research).<br><em>Phương pháp:</em> Tổng hợp lý thuyết kết hợp với dữ liệu thực nghiệm (literature review + empirical evidence).<br><em>Trích dẫn:</em> Rất cao, tham chiếu rộng rãi các học giả nổi tiếng về lĩnh vực thụ đắc thì và thể (tense and aspect) trong ngữ pháp.<br><em>Cập nhật:</em> Trung bình (Đã xuất bản hơn 20 năm, cần bổ sung các phương pháp đo lường thực nghiệm hiện đại).",
+            6: "<strong>6. Slabakova, R. (2003). Semantic evidence for functional categories in interlanguage grammars.</strong><br><em>Cơ quan xuất bản:</em> SAGE Publications.<br><em>Phương pháp:</em> Phân tích lý thuyết kết hợp dữ liệu người học (theoretical analysis supported by learner data) trong khuôn khổ ngữ pháp tạo sinh.<br><em>Trích dẫn:</em> Độ tin cậy cao, dựa trên lý thuyết Universal Grammar của Chomsky để củng cố các luận điểm về phạm trù chức năng.<br><em>Cập nhật:</em> Trung bình (Vẫn là văn bản nền tảng quan trọng, cần cập nhật thêm các phương pháp thực nghiệm nhận thức mới).",
+            7: "<strong>7. Yadavalli, A. et al. (2023). Modeling Second Language Acquisition with BERT.</strong><br><em>Cơ quan xuất bản:</em> Kỷ yếu hội nghị quốc tế ACL (Association for Computational Linguistics - tổ chức hàng đầu về NLP và AI học thuật).<br><em>Phương pháp:</em> Thực nghiệm dựa trên mô hình tính toán (computational/experimental approach), huấn luyện mô hình BERT để mô phỏng SLA.<br><em>Trích dẫn:</em> Độ tin cậy cao, kết hợp hài hòa giữa SLA truyền thống (Krashen, Long) và công nghệ xử lý ngôn ngữ tự nhiên hiện đại.<br><em>Cập nhật:</em> Rất cao (Xuất bản năm 2023, thể hiện xu hướng mới nhất kết hợp trí tuệ nhân tạo).",
+            8: "<strong>8. Saville-Troike, M. (2012). Introducing Second Language Acquisition.</strong><br><em>Cơ quan xuất bản:</em> Cambridge University Press.<br><em>Phương pháp:</em> Đa phương pháp (multi-methodological) và liên ngành (ngôn ngữ học cấu trúc, tâm lý học nhận thức, xã hội học).<br><em>Trích dẫn:</em> Độ tin cậy rất cao nhờ hệ thống nguồn tài liệu đa dạng, khách quan, trích dẫn chuẩn mực từ các nguồn sơ cấp uy tín.<br><em>Cập nhật:</em> Khá (Giữ vững giá trị nhờ liên kết lý thuyết cổ điển với các bước tiến hiện đại từ khoa học nhận thức và thần kinh học ngôn ngữ).",
+            9: "<strong>9. Lightbown, P. & Spada, N. (2013). How Languages are Learned.</strong><br><em>Cơ quan xuất bản:</em> Oxford University Press (OUP - uy tín bậc nhất toàn cầu).<br><em>Phương pháp:</em> Nghiên cứu thực chứng hướng tới thực địa lớp học (classroom-based empirical research).<br><em>Trích dẫn:</em> Độ tin cậy cao nhờ sự cân bằng hoàn hảo giữa tính hàn lâm và ứng dụng, ưu tiên trích dẫn các báo cáo thực địa thực tế dễ tiếp cận.<br><em>Cập nhật:</em> Khá (Tích hợp sâu sắc các tiến bộ từ Sociocultural Theory và Dynamic Systems Theory, cập nhật tốt xu hướng công nghệ số).",
+            10: "<strong>10. Larsen-Freeman, D. & Long, M. (1991). An Introduction to Second Language Acquisition Research.</strong><br><em>Cơ quan xuất bản:</em> Longman.<br><em>Phương pháp:</em> Tập trung đặc biệt vào phương pháp luận nghiên cứu thực nghiệm (empirical research methodology).<br><em>Trích dẫn:</em> Độ tin cậy cực kỳ cao, được coi là kho lưu trữ học thuật đồ sộ về các tiêu chuẩn vàng trong thiết kế nghiên cứu SLA.<br><em>Cập nhật:</em> Trung bình (Ấn phẩm mang tính kinh điển cao, tuy nhiên chưa thể bao hàm các đột phá công nghệ mới như Neurolinguistics dựa trên fMRI).",
+            11: "<strong>11. Ellis, R. (1997). Second Language Acquisition.</strong><br><em>Cơ quan xuất bản:</em> Oxford University Press.<br><em>Phương pháp:</em> Tổng hợp và hệ thống hóa lý thuyết (theoretical synthesis), tinh gọn cấu trúc.<br><em>Trích dẫn:</em> Tính đại diện rất cao, trích dẫn chọn lọc các học giả mang tính biểu tượng nhất cho từng trường phái (Krashen, Chomsky, Swain).<br><em>Cập nhật:</em> Trung bình (Văn bản nhập môn kinh điển, độ bền vững khái niệm cao nhưng thiếu vắng các xu hướng công nghệ bùng nổ thập niên 2010-2020).",
+            12: "<strong>12. Meisel, J. (2011). First and Second Language Acquisition: Parallels and Differences.</strong><br><em>Cơ quan xuất bản:</em> Cambridge University Press.<br><em>Phương pháp:</em> Đối chiếu ngôn ngữ học và phân tích định tính chuyên sâu (comparative linguistics & qualitative analysis).<br><em>Trích dẫn:</em> Rất cao nhờ tư duy liên ngành và đa ngữ, trích dẫn phong phú từ các nghiên cứu tiếng Đức, Pháp, Tây Ban Nha để chứng minh tính phổ quát.<br><em>Cập nhật:</em> Khá (Phản ánh tốt tiến bộ chụp cộng hưởng từ fMRI đầu thập niên 2000, tuy nhiên chưa bao quát được tính dẻo não bộ mới nhất)."
         };
 
-        function showSla(key) {
-            // Update Active tab button
+        function showSla(index) {
             const buttons = document.querySelectorAll('.sla-tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.currentTarget.classList.add('active');
+            buttons[index-1].classList.add('active');
 
-            // Update content area
-            document.getElementById('sla-detail-content').innerHTML = slaData[key];
+            document.getElementById('sla-detail-content').innerHTML = slaData[index];
+        }
+
+        /* --- 3. INTERACTIVE PROMPT ENGINE SWITHCER (ASSIGNMENT 3 - ĐẦY ĐỦ 3 TÁC VỤ) --- */
+        const promptTasks = {
+            1: {
+                leftTitle: "<i class='fas fa-times-circle' style='color:#ff6b6b'></i> Tác vụ 1 - Prompt Cơ Bản",
+                leftText: "Tóm tắt bài đọc The Communist Manifesto",
+                rightTitle: "<i class='fas fa-check-circle' style='color:var(--dreamy-cyan)'></i> Tác vụ 1 - Prompt Nâng Cao (SMART)",
+                rightText: `Bạn là một giảng viên đại học chuyên hướng dẫn kỹ năng đọc hiểu và phân tích học thuật. Nhiệm vụ của bạn là tóm tắt bài đọc học thuật dưới đây theo cách rõ ràng, logic và dễ hiểu đối với sinh viên đại học.
+Hãy thực hiện theo các bước sau:
+Bước 1: Xác định chủ đề chính của bài đọc và mục đích của tác giả.
+Bước 2: Chia bài viết thành các luận điểm hoặc phần nội dung quan trọng.
+Bước 3: Phân tích ngắn gọn cách tác giả phát triển lập luận, bao gồm ví dụ, dữ liệu hoặc dẫn chứng nổi bật.
+Bước 4: Tóm tắt lại toàn bộ nội dung bằng lời văn học thuật ngắn gọn, mạch lạc và khách quan.
+Bước 5: Kết thúc bằng 2 đến 3 câu nêu ý nghĩa hoặc đóng góp chính của bài viết.
+
+Yêu cầu trình bày:
+- Viết thành các đoạn văn logic, có liên kết ý rõ ràng.
+- Sử dụng văn phong học thuật dễ hiểu.
+- Không sao chép nguyên văn quá nhiều từ tài liệu gốc.
+- Giữ lại đầy đủ các luận điểm cốt lõi.
+- Độ dài khoảng 300 đến 500 từ.`
+            },
+            2: {
+                leftTitle: "<i class='fas fa-times-circle' style='color:#ff6b6b'></i> Tác vụ 2 - Prompt Cơ Bản",
+                leftText: "Giải thích khái niệm chủ nghĩa duy vật lịch sử",
+                rightTitle: "<i class='fas fa-check-circle' style='color:var(--dreamy-cyan)'></i> Tác vụ 2 - Prompt Nâng Cao (SMART)",
+                rightText: `Bạn là một giảng viên đại học chuyên ngành Triết học Mác - Lênin với nhiệm vụ giải thích các khái niệm học thuật phức tạp cho sinh viên năm nhất theo cách dễ hiểu nhưng vẫn đảm bảo tính chính xác học thuật.
+Nhiệm vụ của bạn là giải thích khái niệm “Chủ nghĩa duy vật lịch sử” một cách logic, có hệ thống và dễ tiếp cận.
+
+Hãy thực hiện theo các bước sau:
+Bước 1: Đưa ra định nghĩa ngắn gọn và chính xác về chủ nghĩa duy vật lịch sử.
+Bước 2: Giải thích bối cảnh ra đời và vai trò của Karl Marx cùng Friedrich Engels trong việc xây dựng học thuyết.
+Bước 3: Phân tích các khái niệm cốt lõi gồm: phương thức sản xuất, lực lượng sản xuất, quan hệ sản xuất, cơ sở hạ tầng, kiến trúc thượng tầng, đấu tranh giai cấp.
+Bước 4: Giải thích mối quan hệ giữa các yếu tố trên theo trình tự nguyên nhân và kết quả.
+Bước 5: Đưa ra ít nhất 2 ví dụ thực tế hoặc hiện đại để minh họa cho học thuyết, ví dụ như tác động của AI, internet hoặc kinh tế số đối với xã hội.
+Bước 6: Đánh giá ngắn gọn ý nghĩa, ảnh hưởng và những tranh luận xoay quanh học thuyết trong xã hội hiện đại.
+Bước 7: Kết luận bằng phần tóm tắt ngắn khoảng 3 đến 5 câu về giá trị cốt lõi của chủ nghĩa duy vật lịch sử.
+
+Yêu cầu trình bày:
+- Viết thành các đoạn văn học thuật mạch lạc và có liên kết logic.
+- Sử dụng ngôn ngữ rõ ràng, dễ hiểu đối với sinh viên đại học.
+- Giải thích thuật ngữ chuyên ngành khi xuất hiện lần đầu.
+- Không chỉ liệt kê ý mà cần phân tích và diễn giải.
+- Kết hợp ví dụ cụ thể để tăng khả năng hiểu khái niệm.`
+            },
+            3: {
+                leftTitle: "<i class='fas fa-times-circle' style='color:#ff6b6b'></i> Tác vụ 3 - Prompt Cơ Bản",
+                leftText: "Tạo câu hỏi ôn tập về Chủ nghĩa duy vật lịch sử",
+                rightTitle: "<i class='fas fa-check-circle' style='color:var(--dreamy-cyan)'></i> Tác vụ 3 - Prompt Nâng Cao (SMART)",
+                rightText: `Bạn là một giảng viên đại học chuyên ngành Triết học Mác - Lênin, có kinh nghiệm xây dựng đề cương và bộ câu hỏi ôn tập cho sinh viên đại học.
+Nhiệm vụ của bạn là tạo một bộ câu hỏi ôn tập toàn diện cho chủ đề “Chủ nghĩa duy vật lịch sử” nhằm giúp sinh viên hiểu sâu lý thuyết, phát triển tư duy phân tích và vận dụng kiến thức vào thực tiễn.
+
+Hãy thực hiện theo các bước sau:
+Bước 1: Xác định các nội dung trọng tâm của chủ đề, bao gồm: khái niệm chủ nghĩa duy vật lịch sử, phương thức sản xuất, lực lượng sản xuất, quan hệ sản xuất, cơ sở hạ tầng và kiến trúc thượng tầng, đấu tranh giai cấp, vai trò của kinh tế đối với sự phát triển xã hội, ý nghĩa và ảnh hưởng của học thuyết trong xã hội hiện đại.
+Bước 2: Phân loại câu hỏi theo 4 mức độ nhận thức: Nhận biết, Thông hiểu, Vận dụng, Vận dụng cao.
+Bước 3: Với mỗi mức độ, tạo nhiều dạng câu hỏi khác nhau như: Giải thích khái niệm, Phân tích và lập luận, So sánh, Liên hệ thực tế, Đánh giá và phản biện.
+Bước 4: Đảm bảo câu hỏi được sắp xếp theo trình tự từ dễ đến khó và có sự liên kết logic giữa các phần.
+Bước 5: Sau mỗi nhóm câu hỏi, thêm phần “Mục tiêu ôn tập” ngắn gọn để giải thích kỹ năng hoặc kiến thức mà sinh viên cần đạt được.
+
+Yêu cầu trình bày:
+- Viết bằng văn phong học thuật rõ ràng và dễ hiểu.
+- Câu hỏi phải chính xác, ngắn gọn nhưng có chiều sâu học thuật.
+- Tránh câu hỏi quá chung chung hoặc mơ hồ.
+- Khuyến khích tư duy phản biện và khả năng vận dụng thực tiễn.
+- Trình bày thành từng mục có tiêu đề rõ ràng.`
+            }
+        };
+
+        function switchPromptTask(taskId) {
+            const buttons = document.querySelectorAll('.prompt-task-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            buttons[taskId-1].classList.add('active');
+
+            document.getElementById('box-prompt-title-left').innerHTML = promptTasks[taskId].leftTitle;
+            document.getElementById('box-prompt-text-left').innerText = promptTasks[taskId].leftText;
+            document.getElementById('box-prompt-title-right').innerHTML = promptTasks[taskId].rightTitle;
+            document.getElementById('box-prompt-text-right').innerText = promptTasks[taskId].rightText;
         }
 
         /* --- 4. INTERACTIVE MANIFESTO SIGNATURE (ASSIGNMENT 6) --- */
