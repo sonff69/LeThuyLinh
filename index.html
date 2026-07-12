@@ -20,9 +20,10 @@
             --primary-pink: #ffb6c1;
             --accent-purple: #9b5de5;
             --dreamy-cyan: #00f5d4;
-            --bg-glass: rgba(255, 255, 255, 0.15);
-            --border-glass: rgba(255, 255, 255, 0.25);
-            --shadow-glow: 0 8px 32px 0 rgba(155, 93, 229, 0.2);
+            /* Đã làm đậm nền box để nâng cao độ tương phản và hiển thị rõ chữ */
+            --bg-glass: rgba(20, 18, 32, 0.85); 
+            --border-glass: rgba(255, 255, 255, 0.15);
+            --shadow-glow: 0 12px 40px 0 rgba(15, 10, 25, 0.5);
             --font-main: 'Quicksand', sans-serif;
             --font-title: 'Playfair Display', serif;
         }
@@ -36,7 +37,7 @@
             position: relative;
         }
 
-        /* Ambient Dream Overlay */
+        /* Ambient Darker Dream Overlay để dìm bớt nền sáng của back.jpg, làm nổi bật các box chữ */
         body::before {
             content: '';
             position: fixed;
@@ -44,7 +45,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(135deg, rgba(155, 93, 229, 0.1), rgba(255, 182, 193, 0.15));
+            background: linear-gradient(135deg, rgba(15, 10, 25, 0.45), rgba(25, 15, 35, 0.4));
             pointer-events: none;
             z-index: 0;
         }
@@ -65,10 +66,10 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(20, 18, 32, 0.9);
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(255, 182, 193, 0.5);
+            background: rgba(255, 182, 193, 0.6);
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
@@ -82,9 +83,9 @@
             left: 0;
             width: 100%;
             z-index: 100;
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(18, 16, 28, 0.85);
             border-bottom: 1px solid var(--border-glass);
             transition: all 0.4s ease;
         }
@@ -143,8 +144,8 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
-            border: 1px solid var(--border-glass);
-            box-shadow: 0 4px 15px rgba(155, 93, 229, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(155, 93, 229, 0.4);
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
@@ -152,7 +153,7 @@
         }
         .btn-drive-nav:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 182, 193, 0.5);
+            box-shadow: 0 6px 20px rgba(255, 182, 193, 0.6);
         }
 
         /* --- Hero Section --- */
@@ -168,8 +169,8 @@
         .hero-card {
             background: var(--bg-glass);
             border: 1px solid var(--border-glass);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-radius: 24px;
             padding: 45px;
             max-width: 900px;
@@ -216,6 +217,7 @@
             font-size: 2.8rem;
             margin-bottom: 10px;
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            color: #ffffff;
         }
         .hero-info h2 {
             font-size: 1.2rem;
@@ -226,9 +228,9 @@
         }
         .hero-desc {
             font-size: 1rem;
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95);
         }
         .hero-meta {
             display: flex;
@@ -236,7 +238,7 @@
             gap: 15px;
         }
         .meta-tag {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             border: 1px solid var(--border-glass);
             padding: 6px 14px;
             border-radius: 15px;
@@ -244,6 +246,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         /* --- Sections General Styling --- */
@@ -264,6 +267,7 @@
             margin-bottom: 10px;
             display: inline-block;
             position: relative;
+            color: #ffffff;
         }
         .section-title::after {
             content: '';
@@ -279,24 +283,26 @@
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            font-weight: 700;
         }
 
         /* --- Project Gallery (Assignments) --- */
         .drive-callout {
-            background: linear-gradient(135deg, rgba(155, 93, 229, 0.2), rgba(255, 182, 193, 0.2));
+            background: linear-gradient(135deg, rgba(30, 20, 45, 0.9), rgba(45, 20, 35, 0.9));
             border: 1px solid var(--border-glass);
             border-radius: 20px;
-            padding: 25px;
+            padding: 30px;
             text-align: center;
             max-width: 800px;
-            margin: 0 auto 40px;
-            backdrop-filter: blur(8px);
-            box-shadow: var(--shadow-glow);
+            margin: 0 auto 45px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
         .drive-callout p {
             font-size: 1.1rem;
-            margin-bottom: 15px;
-            color: #ffffff;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.6;
         }
         .btn-drive-main {
             display: inline-flex;
@@ -350,12 +356,12 @@
         .project-card {
             background: var(--bg-glass);
             border: 1px solid var(--border-glass);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-radius: 20px;
             padding: 30px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-glow);
             display: none; /* Controlled by JS */
         }
         .project-card.show {
@@ -369,11 +375,11 @@
         .project-card:hover {
             transform: translateY(-8px);
             border-color: var(--primary-pink);
-            box-shadow: 0 12px 30px rgba(255, 182, 193, 0.3);
+            box-shadow: 0 12px 30px rgba(255, 182, 193, 0.4);
         }
         .project-badge {
             display: inline-block;
-            background: rgba(155, 93, 229, 0.2);
+            background: rgba(155, 93, 229, 0.3);
             color: var(--primary-pink);
             padding: 4px 10px;
             border-radius: 12px;
@@ -381,6 +387,7 @@
             font-weight: 700;
             margin-bottom: 15px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .project-card h3 {
             font-family: var(--font-title);
@@ -390,8 +397,8 @@
         }
         .project-card p {
             font-size: 0.95rem;
-            line-height: 1.5;
-            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 20px;
         }
         .project-footer {
@@ -428,9 +435,9 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(26, 26, 26, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 12, 24, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             z-index: 1000;
             display: flex;
             align-items: center;
@@ -444,7 +451,7 @@
             pointer-events: auto;
         }
         .modal-content {
-            background: rgba(30, 30, 40, 0.9);
+            background: rgba(22, 18, 32, 0.98);
             border: 1px solid var(--border-glass);
             border-radius: 24px;
             max-width: 800px;
@@ -453,7 +460,7 @@
             overflow-y: auto;
             padding: 40px;
             position: relative;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
             transform: scale(0.9);
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -484,11 +491,13 @@
             font-size: 1.15rem;
             margin: 20px 0 10px;
             color: var(--dreamy-cyan);
+            border-bottom: 1px solid rgba(0, 245, 212, 0.2);
+            padding-bottom: 5px;
         }
         .modal-body p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.98rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.95);
             margin-bottom: 15px;
         }
         .modal-body ul, .modal-body ol {
@@ -497,17 +506,20 @@
         }
         .modal-body li {
             margin-bottom: 8px;
-            line-height: 1.5;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
         }
         /* Style for code blocks or special items inside modals */
         .modal-prompt-box {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.3);
             border-left: 4px solid var(--accent-purple);
             padding: 15px;
             border-radius: 0 10px 10px 0;
             margin: 15px 0;
             font-family: monospace;
             font-size: 0.9rem;
+            line-height: 1.6;
+            color: #e0d0f0;
         }
 
         /* --- Reflections & Conclusions --- */
@@ -532,6 +544,7 @@
                 flex-direction: column;
                 text-align: center;
                 padding: 30px;
+                gap: 25px;
             }
             .hero-meta {
                 justify-content: center;
@@ -547,11 +560,12 @@
             line-height: 1.7;
             margin-bottom: 15px;
             font-size: 0.98rem;
+            color: rgba(255, 255, 255, 0.95);
         }
 
         /* --- Footer --- */
         footer {
-            background: rgba(26, 26, 26, 0.9);
+            background: rgba(15, 13, 24, 0.95);
             text-align: center;
             padding: 30px 20px;
             border-top: 1px solid var(--border-glass);
@@ -799,7 +813,7 @@
                 <h3>Tổng hợp & Thẩm định khoa học</h3>
                 <p>Nghiên cứu tập trung đánh giá 12 nguồn học liệu kinh điển trong lĩnh vực Thụ đắc ngôn ngữ thứ hai (SLA) trải dài từ năm 1985 đến 2023:</p>
                 <ul>
-                    <li><strong>Stephen Krashen (1985) - The Input Hypothesis:</strong> Công trình nền tảng mang tính kinh điển cao, đề xuất khái niệm "đầu vào dễ hiểu" (comprehensible input). Điểm hạn chế là thiếu bằng chứng thực nghiệm rõ ràng và khó đo lường chính xác cơ chế sinh học trong não bộ.</li>
+                    <li><strong>Stephen Krashen (1985) - The Input Hypothesis:</strong> Công trình nền tảng mang tính kinh đoán cao, đề xuất khái niệm "đầu vào dễ hiểu" (comprehensible input). Điểm hạn chế là thiếu bằng chứng thực nghiệm rõ ràng và khó đo lường chính xác cơ chế sinh học trong não bộ.</li>
                     <li><strong>Michael Long (1996) & Susan Gass (2007) - Interaction Hypothesis:</strong> Bổ sung lỗ hổng của Krashen bằng cách đưa vào vai trò của sự tương tác, đàm phán ý nghĩa (negotiation of meaning) và "đầu ra" (output). Dựa trên dữ liệu thực nghiệm phong phú, mang giá trị thực tiễn giảng dạy cao.</li>
                     <li><strong>Schwartz & Sprouse (1996) - Full Transfer/Full Access:</strong> Tiếp cận dưới góc độ ngữ pháp tạo sinh, phân tích chi tiết dữ liệu liên ngôn ngữ (interlanguage) của người học nhưng hạn chế về tính phổ quát thực nghiệm.</li>
                     <li><strong>Yadavalli, A. et al. (2023) - Modeling SLA with BERT:</strong> Công trình đột phá mang hơi thở thời đại, kết hợp trí tuệ nhân tạo (mô hình tính toán học sâu BERT) để mô phỏng và tái hiện cách con người học ngôn ngữ thứ hai. Đây là nguồn có tính cập nhật cao nhất, mở ra kỷ nguyên nghiên cứu liên ngành giữa AI và Ngôn ngữ học.</li>
@@ -824,7 +838,7 @@
                         <br><small>Kết quả: Phản hồi chung chung, khô khan, thiếu cấu trúc sư phạm phù hợp.</small>
                     </li>
                     <li style="margin-top: 15px;">
-                        <strong>Prompt cải tiến:</strong> <em>"Giải thích chủ nghĩa duy vật lịch sử. Nêu định nghĩa, nội dung cốt lõi và ý nghĩa của nó. Viết dễ hiểu và có ví dụ."</em>
+                        <strong>Prompt cải tiến:</strong> <em>"Giải thích chủ nghĩa duy vật lịch sử. Trình bày định nghĩa, nội dung cốt lõi và ý nghĩa của nó. Viết dễ hiểu và có ví dụ."</em>
                         <br><small>Kết quả: Có cấu trúc hơn nhưng chưa định hình rõ ràng đối tượng độc giả.</small>
                     </li>
                     <li style="margin-top: 15px;">
