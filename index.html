@@ -3,90 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lê Thùy Linh | Digital Portfolio</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts for Cute & Modern Typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Quicksand', 'sans-serif'],
-                        heading: ['Fredoka', 'sans-serif'],
-                    },
-                    colors: {
-                        dreamyPink: '#FFB7B2',
-                        dreamyPeach: '#FFDAC1',
-                        holographicTeal: '#00F2FE',
-                        holographicPurple: '#9B51E0',
-                        darkSlate: '#1E1E24',
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Thùy Linh's Digital Portfolio ✨</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom Styles for Dreamy & Playful Vibe */
+        :root {
+            --primary-pink: #ffd3e8;
+            --soft-purple: #e2d5f8;
+            --neon-cyan: #a5f3fc;
+            --dark-glass: rgba(24, 18, 30, 0.7);
+            --light-glass: rgba(255, 255, 255, 0.08);
+            --border-glass: rgba(255, 255, 255, 0.15);
+            --accent-glow: 0 0 20px rgba(255, 211, 232, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
         body {
+            font-family: 'Quicksand', sans-serif;
             background: url('back.jpg') no-repeat center center fixed;
             background-size: cover;
+            color: #ffffff;
             overflow-x: hidden;
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 8px 32px 0 rgba(255, 183, 178, 0.2);
+            position: relative;
         }
 
-        .glass-nav {
-            background: rgba(30, 30, 36, 0.6);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Iridescent Holographic Text and Shadows */
-        .holo-text {
-            background: linear-gradient(135deg, #FFB7B2 0%, #FFDAC1 30%, #00F2FE 70%, #9B51E0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .holo-border-glow:hover {
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.6), 0 0 40px rgba(155, 81, 224, 0.4);
-            border-color: #00F2FE;
-        }
-
-        /* Floating elements animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(3deg); }
-        }
-        .floating-element {
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes drift {
-            0% { transform: translateY(0px) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-100vh) translateX(50px) rotate(360deg); opacity: 0; }
-        }
-        
-        /* Particle styling */
-        .particle {
-            position: absolute;
+        /* Canvas hiệu ứng hoa rơi mộng mơ */
+        #petal-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,183,178,0.2) 70%);
-            border-radius: 50%;
-            animation: drift 12s linear infinite;
+            z-index: 1;
         }
 
         /* Custom Scrollbar */
@@ -94,570 +49,1019 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: rgba(30, 30, 36, 0.9);
+            background: rgba(20, 15, 25, 0.5);
         }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #FFB7B2, #9B51E0);
-            border-radius: 10px;
+            background: var(--primary-pink);
+            border-radius: 4px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            z-index: 100;
+            background: rgba(24, 18, 30, 0.4);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glass);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-pink);
+            text-shadow: var(--accent-glow);
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px rgba(165, 243, 252, 0.5);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-cyan);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .btn-drive {
+            background: linear-gradient(135deg, #fbcfe8, #d8b4fe);
+            color: #110c1a !important;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            box-shadow: var(--accent-glow);
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-drive:hover {
+            transform: scale(1.05) rotate(-1deg);
+            box-shadow: 0 0 25px rgba(216, 180, 254, 0.7);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 60px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .profile-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .avatar-frame {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(45deg, var(--primary-pink), var(--neon-cyan), var(--soft-purple));
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3), var(--accent-glow);
+            animation: floatAvatar 6s ease-in-out infinite;
+        }
+
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #18121e;
+        }
+
+        .sparkle-icon {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: pulseSparkle 2s infinite alternate;
+        }
+        .sp1 { top: -10px; left: -10px; color: var(--primary-pink); }
+        .sp2 { bottom: 10px; right: -15px; color: var(--neon-cyan); }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #ffffff, var(--primary-pink), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .hero p.subtitle {
+            font-size: 1.25rem;
+            color: var(--soft-purple);
+            max-width: 600px;
+            margin-bottom: 35px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        /* Main Container for Glassmorphic Cards */
+        main {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 100px 20px;
+        }
+
+        section {
+            background: var(--dark-glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 50px;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        section.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        h2.section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            color: var(--primary-pink);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px dashed rgba(255,211,232,0.2);
+            padding-bottom: 15px;
+        }
+
+        /* About Me Content */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e5e7eb;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .about-meta {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.05rem;
+        }
+
+        .meta-label {
+            color: var(--primary-pink);
+            font-weight: 700;
+            width: 120px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .meta-value {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* GG Drive Call to Action Banner */
+        .drive-banner {
+            background: linear-gradient(135deg, rgba(216, 180, 254, 0.15), rgba(165, 243, 252, 0.15));
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drive-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,211,232,0.1) 0%, transparent 70%);
+            pointer-events: none;
+            animation: rotateBg 20s linear infinite;
+        }
+
+        .drive-banner h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .drive-banner p {
+            color: #d1d5db;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Grid Tasks (Dự Án / Bài Tập) */
+        .tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .task-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 280px;
+        }
+
+        .task-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 60%, rgba(255, 211, 232, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .task-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-pink);
+            box-shadow: 0 15px 35px rgba(255, 211, 232, 0.15);
+        }
+
+        .task-card:hover::before {
+            opacity: 1;
+        }
+
+        .task-badge {
+            background: rgba(255, 211, 232, 0.15);
+            color: var(--primary-pink);
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            width: fit-content;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 211, 232, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .task-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        .task-card:hover h3 {
+            color: var(--neon-cyan);
+        }
+
+        .task-card p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .btn-view-task {
+            margin-top: auto;
+            color: var(--neon-cyan);
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+
+        .task-card:hover .btn-view-task {
+            gap: 12px;
+        }
+
+        /* Drawer details for Tasks */
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 5, 15, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .drawer-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -600px;
+            width: 600px;
+            max-width: 100%;
+            height: 100%;
+            background: #15111e;
+            border-left: 1px solid var(--border-glass);
+            box-shadow: -20px 0 50px rgba(0,0,0,0.5);
+            z-index: 1001;
+            transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 50px 40px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .drawer.active {
+            right: 0;
+        }
+
+        .drawer-close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: #9ca3af;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .drawer-close:hover {
+            color: var(--primary-pink);
+            transform: rotate(90deg);
+        }
+
+        .drawer-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary-pink);
+            margin-bottom: 15px;
+            border-bottom: 2px dashed rgba(255,211,232,0.2);
+            padding-bottom: 15px;
+        }
+
+        .drawer-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            color: var(--neon-cyan);
+            margin: 25px 0 10px 0;
+        }
+
+        .drawer-content p {
+            color: #d1d5db;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .drawer-content ul, .drawer-content ol {
+            margin-left: 20px;
+            color: #d1d5db;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .drawer-content blockquote {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--primary-pink);
+            padding: 15px;
+            border-radius: 0 12px 12px 0;
+            color: #e5e7eb;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        /* Reflection & AI Ethic Section */
+        .ethic-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .rule-card {
+            background: rgba(255,255,255,0.02);
+            border-left: 4px solid var(--neon-cyan);
+            border-radius: 0 16px 16px 0;
+            padding: 20px 25px;
+            transition: all 0.3s ease;
+        }
+
+        .rule-card:hover {
+            background: rgba(165, 243, 252, 0.05);
+            transform: translateX(5px);
+        }
+
+        .rule-card h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            color: var(--neon-cyan);
+            margin-bottom: 8px;
+        }
+
+        .rule-card p {
+            color: #d1d5db;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid var(--border-glass);
+            background: rgba(24, 18, 30, 0.6);
+            backdrop-filter: blur(12px);
+            position: relative;
+            z-index: 10;
+            font-size: 0.95rem;
+            color: #9ca3af;
+        }
+
+        footer span {
+            color: var(--primary-pink);
+            font-weight: 700;
+        }
+
+        /* Keyframe Animations */
+        @keyframes floatAvatar {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        @keyframes pulseSparkle {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+
+        @keyframes rotateBg {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Custom Interactive elements for cursor sparkles */
+        .sparkle-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: var(--primary-pink);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            animation: shrinkFade 0.8s forwards ease-out;
+        }
+
+        @keyframes shrinkFade {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            nav {
+                display: none; /* Can expand to hamburger in real dev, keeping simplified here */
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            section {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
-<body class="text-white selection:bg-holographicTeal selection:text-darkSlate min-h-screen">
+<body>
 
-    <!-- Interactive Canvas Background for floating sparkles -->
-    <div id="particle-container" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
+    <!-- Sparkle Canvas Effect -->
+    <canvas id="petal-canvas"></canvas>
 
-    <!-- NAVIGATION BAR -->
-    <nav class="glass-nav fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2 group">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-dreamyPink to-holographicTeal flex items-center justify-center text-darkSlate font-bold group-hover:scale-110 transition-transform">
-                    <i class="fa-solid fa-seedling text-lg"></i>
-                </div>
-                <span class="font-heading text-xl font-bold tracking-wide text-white group-hover:text-holographicTeal transition-colors">Linh.space</span>
-            </a>
-            
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#about" class="hover:text-holographicTeal font-medium transition-colors">Giới Thiệu</a>
-                <a href="#skills" class="hover:text-holographicTeal font-medium transition-colors">Kỹ Năng</a>
-                <a href="#projects" class="hover:text-holographicTeal font-medium transition-colors">Bài Tập</a>
-                <a href="#reflection" class="hover:text-holographicTeal font-medium transition-colors">Nhìn Lại</a>
+    <!-- Navigation Header -->
+    <header>
+        <div class="logo">LTL.Portfolio ✧</div>
+        <nav>
+            <a href="#about" class="active">Về Mình</a>
+            <a href="#tasks">Học Tập & Dự Án</a>
+            <a href="#ethic">Nhận Thức & Đạo Đức</a>
+            <a href="https://drive.google.com/drive/folders/1XEYMXM_505YVnwneDojMgX13Y4GpY3-b?usp=drive_link" target="_blank" class="btn-drive">Xem bài tập trên GG drive</a>
+        </nav>
+    </header>
+
+    <!-- Hero Area -->
+    <div class="hero">
+        <div class="profile-container">
+            <div class="avatar-frame">
+                <img src="Hình 1.jpg" alt="Lê Thùy Linh">
             </div>
-
-            <div class="flex items-center gap-4">
-                <a href="https://drive.google.com/drive/folders/1XEYMXM_505YVnwneDojMgX13Y4GpY3-b?usp=drive_link" target="_blank" 
-                   class="bg-gradient-to-r from-dreamyPink via-dreamyPeach to-holographicTeal text-darkSlate font-bold px-4 py-2 rounded-full hover:scale-105 hover:shadow-lg transition-all text-sm flex items-center gap-2">
-                    <i class="fa-brands fa-google-drive"></i> Xem bài tập trên GG Drive
-                </a>
-            </div>
+            <div class="sparkle-icon sp1">✦</div>
+            <div class="sparkle-icon sp2">✧</div>
         </div>
-    </nav>
+        <h1>Hi, mình là Thùy Linh! ✨</h1>
+        <p class="subtitle">Sinh viên ngành Ngôn ngữ & Văn hóa Anh với khát vọng kiến tạo sự giao hòa ngọt ngào giữa vẻ đẹp ngôn từ và kỷ nguyên số.</p>
+    </div>
 
-    <!-- HERO SECTION -->
-    <section class="relative min-h-screen pt-28 flex items-center justify-center px-6 z-10">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <!-- Hero Text -->
-            <div class="lg:col-span-7 flex flex-col gap-6 text-center lg:text-left">
-                <div class="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider self-center lg:self-start w-fit backdrop-blur-md border border-white/20">
-                    <span class="w-2.5 h-2.5 rounded-full bg-holographicTeal animate-pulse"></span>
-                    ULISer gõ phím làm thơ & yêu công nghệ
-                </div>
-                <h1 class="font-heading text-4xl sm:text-6xl font-bold leading-tight">
-                    Xin chào! Mình là <br>
-                    <span class="holo-text font-extrabold drop-shadow-sm">Lê Thùy Linh ✨</span>
-                </h1>
-                <p class="text-gray-200 text-lg max-w-xl leading-relaxed">
-                    Một sinh viên chuyên ngành <span class="text-dreamyPeach font-bold">Ngôn ngữ và Văn hóa Anh</span> tại <span class="text-dreamyPink font-bold">Đại học Ngoại ngữ - ĐHQGHN (ULIS)</span>. Nơi đây là khu vườn kỹ thuật số lưu giữ mọi dấu ấn trưởng thành của mình qua môn học <span class="italic text-holographicTeal font-bold">"Nhập môn công nghệ số và ứng dụng trí tuệ nhân tạo"</span>.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-4">
-                    <a href="#projects" class="bg-holographicPurple hover:bg-holographicPurple/80 text-white font-bold px-8 py-4 rounded-full shadow-lg hover:translate-y-[-2px] transition-all text-center">
-                        <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Ghé thăm vườn bài tập
-                    </a>
-                    <a href="https://drive.google.com/drive/folders/1XEYMXM_505YVnwneDojMgX13Y4GpY3-b?usp=drive_link" target="_blank" 
-                       class="glass-card hover:bg-white/10 text-white font-bold px-8 py-4 rounded-full border border-white/20 transition-all text-center flex items-center justify-center gap-2">
-                        <i class="fa-brands fa-google-drive"></i> Google Drive chính thức
-                    </a>
-                </div>
-            </div>
+    <!-- Main Container -->
+    <main>
 
-            <!-- Hero Image / Interactive Card -->
-            <div class="lg:col-span-5 flex justify-center">
-                <div class="relative w-72 sm:w-80 h-96 group">
-                    <!-- Rotating Holographic background border -->
-                    <div class="absolute inset-0 bg-gradient-to-tr from-dreamyPink via-holographicTeal to-holographicPurple rounded-3xl blur-md opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"></div>
-                    <!-- Card Content -->
-                    <div class="absolute inset-1.5 glass-card rounded-3xl p-6 flex flex-col justify-between overflow-hidden">
-                        <div class="w-full h-2/3 rounded-2xl overflow-hidden border border-white/20 relative">
-                            <!-- Avatar Placeholder (using User specified syntax) -->
-                            <img src="Hình 1.jpg" alt="Lê Thùy Linh" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                            <!-- Cute tags floating on image hover -->
-                            <div class="absolute bottom-2 left-2 bg-darkSlate/80 backdrop-blur-md px-3 py-1 rounded-full text-xs text-dreamyPeach font-bold">
-                                🦊 Linh, 20 tuổi
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-2 mt-4">
-                            <span class="text-xs uppercase tracking-widest text-holographicTeal font-bold">Hồ Sơ Cá Nhân</span>
-                            <h3 class="font-heading text-lg font-bold">Lê Thùy Linh</h3>
-                            <div class="flex justify-between items-center text-xs text-gray-300">
-                                <span>MSSV: 25040777</span>
-                                <span>K69 - ULIS</span>
-                            </div>
-                        </div>
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title"><span>🌸</span> Về Bản Thân Mình</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Chào cậu! Rất vui vì cậu đã ghé thăm góc nhỏ của mình. Mình là <strong>Lê Thùy Linh</strong>, hiện đang theo đuổi ngành <strong>Ngôn ngữ và Văn hóa Anh</strong> dưới mái trường ULIS yêu dấu.</p>
+                    <p>Nhiều người hay nghĩ học ngôn ngữ chỉ quanh quẩn với những trang sách và bản dịch khô khan. Nhưng đối với mình, ngôn từ chính là một thực thể sống động. Trong bối cảnh số hóa hiện nay, mình luôn tin rằng công nghệ và AI không đến để thay thế chúng ta, mà chính là chất xúc tác mạnh mẽ giúp tư duy ngôn ngữ bay xa hơn.</p>
+                    <p>Digital Portfolio này không chỉ là một bài tập cá nhân, mà là một hành trình ghi lại những nỗ lực học hỏi cách làm chủ công nghệ mới một cách thông minh và có trách nhiệm của mình.</p>
+                </div>
+                <div class="about-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Họ và Tên:</div>
+                        <div class="meta-value">Lê Thùy Linh</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Mã Sinh Viên:</div>
+                        <div class="meta-value">25040777</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Chuyên Ngành:</div>
+                        <div class="meta-value">Ngôn ngữ và Văn hóa Anh</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Trường:</div>
+                        <div class="meta-value">Đại học Ngoại ngữ - ĐHQGHN</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Môn Học:</div>
+                        <div class="meta-value">Nhập môn công nghệ số và ứng dụng AI</div>
                     </div>
                 </div>
             </div>
-            
+        </section>
+
+        <!-- Google Drive Call to Action Banner -->
+        <div class="drive-banner">
+            <h3>📂 Kho Lưu Trữ Bài Tập Trực Tuyến</h3>
+            <p>Để tiện theo dõi chi tiết toàn bộ các tài liệu, tệp tin thực hành cũng như các báo cáo đầy đủ, cậu có thể truy cập trực tiếp vào Google Drive cá nhân của mình nhé!</p>
+            <a href="https://drive.google.com/drive/folders/1XEYMXM_505YVnwneDojMgX13Y4GpY3-b?usp=drive_link" target="_blank" class="btn-drive">Xem bài tập trên GG drive</a>
         </div>
-    </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="py-24 px-6 relative z-10 bg-darkSlate/40 backdrop-blur-sm">
-        <div class="max-w-4xl mx-auto flex flex-col gap-12">
-            <div class="text-center">
-                <h2 class="font-heading text-3xl sm:text-5xl font-bold mb-4">Về bản thân mình</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-dreamyPink to-holographicTeal mx-auto rounded-full"></div>
-            </div>
-
-            <div class="glass-card p-8 sm:p-12 rounded-3xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div class="flex flex-col gap-4">
-                    <div class="w-12 h-12 rounded-2xl bg-dreamyPink/20 flex items-center justify-center text-dreamyPink text-xl">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="font-heading text-xl font-bold">Sinh viên ngoại ngữ năng động</h3>
-                    <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
-                        Mình luôn tin rằng ngôn ngữ không chỉ là phương tiện giao tiếp, mà còn là chiếc chìa khóa mở ra tư duy đa chiều. Khi bước chân vào ULIS, mình mong muốn được khai phá nét đẹp của Văn hóa Anh. Nhưng khi công nghệ số bùng nổ, mình nhận ra một "ULISer thế hệ mới" cần nhiều hơn thế - đó là năng lực làm chủ công nghệ và AI!
-                    </p>
-                </div>
-                <div class="flex flex-col gap-4 border-t md:border-t-0 md:border-l border-white/10 pt-6 md:pt-0 md:pl-8">
-                    <div class="w-12 h-12 rounded-2xl bg-holographicTeal/20 flex items-center justify-center text-holographicTeal text-xl">
-                        <i class="fa-solid fa-microchip"></i>
-                    </div>
-                    <h3 class="font-heading text-xl font-bold">Cú hích công nghệ đầu tiên</h3>
-                    <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
-                        Khóa học này đã thay đổi hoàn toàn cách mình nhìn nhận thế giới số. Từ những dòng lệnh prompt tưởng chừng đơn điệu, đến cách phối hợp nhịp nhàng các nền tảng AI tạo sinh, mình nhận ra công nghệ không hề khô khan mà cực kỳ "mộng mơ", bay bổng nếu bạn biết thổi vào đó sự sáng tạo cá nhân.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- WORK / PROJECT SECTION -->
-    <section id="projects" class="py-24 px-6 relative z-10">
-        <div class="max-w-6xl mx-auto flex flex-col gap-12">
-            
-            <div class="text-center flex flex-col gap-4 items-center">
-                <span class="text-xs uppercase tracking-widest text-holographicTeal font-bold">Nhật Ký Tích Lũy</span>
-                <h2 class="font-heading text-3xl sm:text-5xl font-bold">Hành Trình Kỹ Năng Số</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-dreamyPink to-holographicTeal rounded-full"></div>
-                <p class="text-gray-300 max-w-xl text-sm sm:text-base mt-2">
-                    Dưới đây là 6 trạm dừng chân thực tế mà mình tự tay thực hiện. Hãy click vào từng trạm để cùng khám phá chi tiết các bài học quý giá mình thu hoạch được nhé!
-                </p>
+        <!-- Tasks Grid Section -->
+        <section id="tasks">
+            <h2 class="section-title"><span>🎯</span> Bài Tập Dự Án</h2>
+            <div class="tasks-grid">
                 
-                <!-- Google Drive Button Placement before Project Grid -->
-                <div class="mt-6">
-                    <a href="https://drive.google.com/drive/folders/1XEYMXM_505YVnwneDojMgX13Y4GpY3-b?usp=drive_link" target="_blank" 
-                       class="holo-border-glow inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 text-white font-extrabold px-8 py-4 rounded-full border border-white/20 shadow-xl hover:scale-105 transition-all">
-                        <i class="fa-brands fa-google-drive text-holographicTeal text-xl"></i>
-                        <span>XEM BÀI TẬP TRỰC TIẾP TRÊN GOOGLE DRIVE</span>
-                    </a>
+                <!-- Task 1 -->
+                <div class="task-card" onclick="openDrawer('task1')">
+                    <div>
+                        <div class="task-badge">Task 1</div>
+                        <h3>Quản lý tệp & thư mục</h3>
+                        <p>Xây dựng không gian làm việc số ngăn nắp, khoa học thông qua các quy tắc đặt tên và quản lý tệp tin chuẩn mực.</p>
+                    </div>
+                    <div class="btn-view-task">Khám phá chi tiết →</div>
                 </div>
-            </div>
 
-            <!-- TASK GRID & DETAILED DRAWER (Interactive Accordion) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                <!-- Task 2 -->
+                <div class="task-card" onclick="openDrawer('task2')">
+                    <div>
+                        <div class="task-badge">Task 2</div>
+                        <h3>Đánh giá học thuật</h3>
+                        <p>Phân tích, so sánh các nghiên cứu tiếp thu ngôn ngữ thứ hai cổ điển (Krashen, Long) và mô hình BERT hiện đại.</p>
+                    </div>
+                    <div class="btn-view-task">Khám phá chi tiết →</div>
+                </div>
+
+                <!-- Task 3 -->
+                <div class="task-card" onclick="openDrawer('task3')">
+                    <div>
+                        <div class="task-badge">Task 3</div>
+                        <h3>Kỹ thuật Prompt</h3>
+                        <p>Chinh phục nghệ thuật giao tiếp với AI bằng bộ khung SMART-Prompt ứng dụng phân tích văn bản chính trị triết học phức tạp.</p>
+                    </div>
+                    <div class="btn-view-task">Khám phá chi tiết →</div>
+                </div>
+
+                <!-- Task 4 -->
+                <div class="task-card" onclick="openDrawer('task4')">
+                    <div>
+                        <div class="task-badge">Task 4</div>
+                        <h3>Hợp tác trực tuyến</h3>
+                        <p>Giải bài toán làm việc nhóm tối ưu qua Trello, Google Docs và MS Teams khi nghiên cứu chủ đề công nghệ số.</p>
+                    </div>
+                    <div class="btn-view-task">Khám phá chi tiết →</div>
+                </div>
+
+                <!-- Task 5 -->
+                <div class="task-card" onclick="openDrawer('task5')">
+                    <div>
+                        <div class="task-badge">Task 5</div>
+                        <h3>Sáng tạo với AI</h3>
+                        <p>Hiện thực hóa trí tưởng tượng bằng văn bản từ ChatGPT kết hợp mỹ thuật tạo sinh từ Stable Diffusion và thiết kế Canva.</p>
+                    </div>
+                    <div class="btn-view-task">Khám phá chi tiết →</div>
+                </div>
+
+                <!-- Task 6 -->
+                <div class="task-card" onclick="openDrawer('task6')">
+                    <div>
+                        <div class="task-badge">Task 6</div>
+                        <h3>AI có trách nhiệm</h3>
+                        <p>Xác định ranh giới đạo đức, xây dựng bộ lọc tư duy phản biện chống đạo văn khi lập dàn ý luận về sức khỏe tinh thần.</p>
+                    </div>
+                    <div class="btn-view-task">Khám phá chi tiết →</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Academic AI Ethics & Personal Reflection Section -->
+        <section id="ethic">
+            <h2 class="section-title"><span>🛡️</span> Bộ Nguyên Tắc Ứng Xử Với AI</h2>
+            <div class="ethic-grid">
+                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 20px; color: #e5e7eb;">Để AI thực sự là một "cộng sự đắc lực" chứ không trở thành kẻ chiếm lĩnh tư duy, mình đã xây dựng cho bản thân bộ 7 nguyên tắc vàng khi làm việc học thuật:</p>
                 
-                <!-- TASK 1 -->
-                <div class="glass-card rounded-3xl p-6 hover:translate-y-[-5px] transition-all duration-300 border border-white/10 flex flex-col justify-between cursor-pointer holo-border-glow" onclick="toggleTask('task1')">
-                    <div class="flex flex-col gap-4">
-                        <div class="w-12 h-12 rounded-2xl bg-rose-400/20 text-rose-400 flex items-center justify-center text-xl">
-                            <i class="fa-solid fa-folder-tree"></i>
-                        </div>
-                        <span class="text-xs text-rose-400 font-bold tracking-wider">Bài Tập 1 • Hệ Thống</span>
-                        <h3 class="font-heading text-xl font-bold">Quản Lý Tập Tin & Thư Mục</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed line-clamp-3">
-                            Làm quen với cấu trúc Windows File Explorer, xây dựng sơ đồ tổ chức thông tin khóa học chuẩn khoa học ngay trên máy tính của mình.
-                        </p>
-                    </div>
-                    <button class="text-left text-xs font-bold text-holographicTeal mt-6 flex items-center gap-1 hover:gap-2 transition-all">
-                        Xem chi tiết <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                <div class="rule-card">
+                    <h4>Nguyên tắc 1: AI hỗ trợ ý tưởng - Tư duy làm chủ</h4>
+                    <p>AI là điểm khởi đầu chứ không bao giờ là điểm kết thúc. Mọi quyết định, lập luận, phong cách và kết luận cuối cùng đều phải xuất phát từ khối óc của chính mình.</p>
                 </div>
 
-                <!-- TASK 2 -->
-                <div class="glass-card rounded-3xl p-6 hover:translate-y-[-5px] transition-all duration-300 border border-white/10 flex flex-col justify-between cursor-pointer holo-border-glow" onclick="toggleTask('task2')">
-                    <div class="flex flex-col gap-4">
-                        <div class="w-12 h-12 rounded-2xl bg-amber-400/20 text-amber-400 flex items-center justify-center text-xl">
-                            <i class="fa-solid fa-magnifying-glass-chart"></i>
-                        </div>
-                        <span class="text-xs text-amber-400 font-bold tracking-wider">Bài Tập 2 • Nghiên Cứu</span>
-                        <h3 class="font-heading text-xl font-bold">Khai Thác & Đánh Giá Dữ Liệu</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed line-clamp-3">
-                            Tìm kiếm, phân tích và phản biện hàng loạt lý thuyết Thụ đắc Ngôn ngữ thứ hai (SLA) kinh điển kết hợp mô hình AI tính toán ngôn ngữ hiện đại.
-                        </p>
-                    </div>
-                    <button class="text-left text-xs font-bold text-holographicTeal mt-6 flex items-center gap-1 hover:gap-2 transition-all">
-                        Xem chi tiết <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                <div class="rule-card">
+                    <h4>Nguyên tắc 2: Luôn luôn kiểm chứng</h4>
+                    <p>Tuyệt đối không mặc định thông tin của AI là chính xác 100%. Luôn đối chiếu chéo các khái niệm, số liệu với nguồn chính thống như Google Scholar hoặc Scopus.</p>
                 </div>
 
-                <!-- TASK 3 -->
-                <div class="glass-card rounded-3xl p-6 hover:translate-y-[-5px] transition-all duration-300 border border-white/10 flex flex-col justify-between cursor-pointer holo-border-glow" onclick="toggleTask('task3')">
-                    <div class="flex flex-col gap-4">
-                        <div class="w-12 h-12 rounded-2xl bg-emerald-400/20 text-emerald-400 flex items-center justify-center text-xl">
-                            <i class="fa-solid fa-terminal"></i>
-                        </div>
-                        <span class="text-xs text-emerald-400 font-bold tracking-wider">Bài Tập 3 • Kỹ Thuật</span>
-                        <h3 class="font-heading text-xl font-bold">Nghệ Thuật Prompt Engineering</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed line-clamp-3">
-                            Khảo sát cách điều khiển các Mô hình Ngôn ngữ lớn (LLM). Thực hành xây dựng bộ lọc câu hỏi ôn tập theo công thức SMART-Prompt toàn diện.
-                        </p>
-                    </div>
-                    <button class="text-left text-xs font-bold text-holographicTeal mt-6 flex items-center gap-1 hover:gap-2 transition-all">
-                        Xem chi tiết <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                <div class="rule-card">
+                    <h4>Nguyên tắc 3: Minh bạch và trung thực</h4>
+                    <p>Khai báo rõ ràng cách thức và mức độ hỗ trợ của công cụ AI khi nộp sản phẩm học thuật. Nói không với đạo văn và sao chép nguyên văn.</p>
                 </div>
 
-                <!-- TASK 4 -->
-                <div class="glass-card rounded-3xl p-6 hover:translate-y-[-5px] transition-all duration-300 border border-white/10 flex flex-col justify-between cursor-pointer holo-border-glow" onclick="toggleTask('task4')">
-                    <div class="flex flex-col gap-4">
-                        <div class="w-12 h-12 rounded-2xl bg-cyan-400/20 text-cyan-400 flex items-center justify-center text-xl">
-                            <i class="fa-solid fa-users-gear"></i>
-                        </div>
-                        <span class="text-xs text-cyan-400 font-bold tracking-wider">Bài Tập 4 • Hợp Tác</span>
-                        <h3 class="font-heading text-xl font-bold">Làm Việc Nhóm Môi Trường Số</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed line-clamp-3">
-                            Ứng dụng Trello, Google Docs, Drive và MS Teams để tổ chức, phối hợp thực hiện một dự án học thuật trơn tru, giải quyết xung đột ý kiến hiệu quả.
-                        </p>
-                    </div>
-                    <button class="text-left text-xs font-bold text-holographicTeal mt-6 flex items-center gap-1 hover:gap-2 transition-all">
-                        Xem chi tiết <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                <div class="rule-card">
+                    <h4>Nguyên tắc 4: Tôn trọng quyền sở hữu trí tuệ</h4>
+                    <p>Truy xuất nguồn gốc (primary sources) của dữ liệu mà AI gợi ý nhằm đảm bảo bản quyền học thuật được tôn trọng một cách trọn vẹn.</p>
                 </div>
 
-                <!-- TASK 5 -->
-                <div class="glass-card rounded-3xl p-6 hover:translate-y-[-5px] transition-all duration-300 border border-white/10 flex flex-col justify-between cursor-pointer holo-border-glow" onclick="toggleTask('task5')">
-                    <div class="flex flex-col gap-4">
-                        <div class="w-12 h-12 rounded-2xl bg-purple-400/20 text-purple-400 flex items-center justify-center text-xl">
-                            <i class="fa-solid fa-palette"></i>
-                        </div>
-                        <span class="text-xs text-purple-400 font-bold tracking-wider">Bài Tập 5 • Sáng Tạo</span>
-                        <h3 class="font-heading text-xl font-bold">Sáng Tạo Nội Dung & Hình Ảnh</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed line-clamp-3">
-                            Kết hợp ChatGPT (lên ý tưởng), Stable Diffusion (vẽ hình minh họa 3D tương lai) và Canva AI để dựng slide bài thuyết trình cực đỉnh về AI.
-                        </p>
-                    </div>
-                    <button class="text-left text-xs font-bold text-holographicTeal mt-6 flex items-center gap-1 hover:gap-2 transition-all">
-                        Xem chi tiết <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                <div class="rule-card">
+                    <h4>Nguyên tắc 5: Bảo vệ thông tin nhạy cảm</h4>
+                    <p>Không bao giờ nhập các thông tin cá nhân bảo mật, dữ liệu nghiên cứu chưa công bố lên các nền tảng AI tạo sinh trực tuyến công cộng.</p>
                 </div>
 
-                <!-- TASK 6 -->
-                <div class="glass-card rounded-3xl p-6 hover:translate-y-[-5px] transition-all duration-300 border border-white/10 flex flex-col justify-between cursor-pointer holo-border-glow" onclick="toggleTask('task6')">
-                    <div class="flex flex-col gap-4">
-                        <div class="w-12 h-12 rounded-2xl bg-pink-400/20 text-pink-400 flex items-center justify-center text-xl">
-                            <i class="fa-solid fa-shield-halved"></i>
-                        </div>
-                        <span class="text-xs text-pink-400 font-bold tracking-wider">Bài Tập 6 • Đạo Đức</span>
-                        <h3 class="font-heading text-xl font-bold">AI Có Trách Nhiệm & Đạo Đức</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed line-clamp-3">
-                            Nghiên cứu chính sách AI học đường, viết bài luận phân tích tâm lý sinh viên và thiết lập Bộ nguyên tắc sử dụng AI minh bạch của cá nhân.
-                        </p>
-                    </div>
-                    <button class="text-left text-xs font-bold text-holographicTeal mt-6 flex items-center gap-1 hover:gap-2 transition-all">
-                        Xem chi tiết <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                <div class="rule-card">
+                    <h4>Nguyên tắc 6: Giữ vững tư duy độc lập</h4>
+                    <p>Chủ động đọc, viết, phản biện và rèn luyện các kỹ năng giao tiếp trực tiếp để não bộ luôn được vận động không ngừng.</p>
                 </div>
 
-            </div>
-
-            <!-- DETAILED CONTENT AREA (Drawn dynamically via JS on click) -->
-            <div id="details-box" class="hidden mt-12 glass-card rounded-3xl p-8 sm:p-12 border border-holographicTeal/30 relative animate-fadeIn duration-500">
-                <button onclick="closeDetails()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-                <div id="details-content">
-                    <!-- Task detail loaded dynamically -->
+                <div class="rule-card">
+                    <h4>Nguyên tắc 7: Đạo đức & trách nhiệm xã hội</h4>
+                    <p>Không sử dụng AI để tạo ra các nội dung độc hại, sai lệch thông tin hoặc gian lận thi cử gây ảnh hưởng tiêu cực đến cộng đồng học thuật xung quanh.</p>
                 </div>
             </div>
+        </section>
 
+    </main>
+
+    <!-- Drawer Modals for Tasks Detail -->
+    <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+    <div class="drawer" id="drawer">
+        <button class="drawer-close" onclick="closeDrawer()">×</button>
+        <div class="drawer-content" id="drawer-content">
+            <!-- Dynamic Content Will Be Injected Here -->
         </div>
-    </section>
+    </div>
 
-    <!-- REFLECTION SECTION -->
-    <section id="reflection" class="py-24 px-6 relative z-10 bg-darkSlate/60">
-        <div class="max-w-4xl mx-auto flex flex-col gap-8">
-            <div class="text-center">
-                <span class="text-xs uppercase tracking-widest text-dreamyPink font-bold">Góc Nhìn Cuối Kỳ</span>
-                <h2 class="font-heading text-3xl sm:text-5xl font-bold mt-2">Trạm dừng & Nhìn lại</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-dreamyPink to-holographicTeal mx-auto rounded-full mt-4"></div>
-            </div>
-            
-            <div class="glass-card p-8 sm:p-12 rounded-3xl flex flex-col gap-6 leading-relaxed">
-                <p class="text-gray-200 text-lg">
-                    "Tương lai không thuộc về AI, tương lai thuộc về những con người biết làm chủ AI một cách thông minh và có trách nhiệm."
-                </p>
-                <p class="text-gray-300 text-sm sm:text-base">
-                    Khi nhìn lại cả chặng đường hoàn thiện cuốn **Digital Portfolio** này, mình cảm thấy tự hào vì những nỗ lực tự thân. Từ một cô sinh viên ngôn ngữ có phần bỡ ngỡ trước các thuật ngữ máy tính, nay mình đã có thể tự tin xây dựng cấu trúc thư mục logic, khai thác tài liệu học thuật đa nguồn sắc bén, soạn thảo prompt tối ưu và ứng dụng trơn chu các phần mềm sáng tạo số.
-                </p>
-                <p class="text-gray-300 text-sm sm:text-base">
-                    Môn học **"Nhập môn công nghệ số và ứng dụng trí tuệ nhân tạo"** không chỉ trang bị cho mình kỹ năng công nghệ, mà quan trọng hơn là rèn luyện cho mình <span class="text-holographicTeal font-bold">tư duy phản tư (reflexive thinking)</span>. Công nghệ rất mạnh, nhưng bản sắc cá nhân, đạo đức học thuật và tư duy độc lập mới là thứ quyết định giá trị của chúng ta. 
-                </p>
-                <div class="border-t border-white/10 pt-6 mt-2 flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-dreamyPink flex items-center justify-center text-darkSlate font-bold">L</div>
-                        <div>
-                            <h4 class="font-heading text-sm font-bold">Lê Thùy Linh</h4>
-                            <span class="text-xs text-gray-400">Sinh viên Ngôn ngữ Anh - ULIS</span>
-                        </div>
-                    </div>
-                    <span class="text-xs text-gray-400">Cập nhật: Tháng 7, 2026</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="py-12 px-6 border-t border-white/10 relative z-10 glass-nav">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col gap-2 text-center md:text-left">
-                <h3 class="font-heading text-xl font-bold">Lê Thùy Linh</h3>
-                <span class="text-xs text-gray-400">© 2026 - Bản quyền thuộc về dự án cá nhân Nhập môn Công nghệ số</span>
-            </div>
-            <div class="flex gap-6 text-xl">
-                <a href="https://drive.google.com/drive/folders/1XEYMXM_505YVnwneDojMgX13Y4GpY3-b?usp=drive_link" target="_blank" class="hover:text-holographicTeal transition-colors"><i class="fa-brands fa-google-drive"></i></a>
-                <a href="#" class="hover:text-holographicTeal transition-colors"><i class="fa-solid fa-envelope"></i></a>
-                <a href="#" class="hover:text-holographicTeal transition-colors"><i class="fa-brands fa-github"></i></a>
-            </div>
-        </div>
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Crafted with 💖 by <span>Lê Thùy Linh</span>. All rights reserved.</p>
     </footer>
 
-    <!-- INTERACTIVE JAVASCRIPT FOR PARTICLES AND ACCORDION -->
+    <!-- JavaScript for Interactions -->
     <script>
-        // Generate floating pastel dream particles dynamically
-        const particleContainer = document.getElementById('particle-container');
-        const particleCount = 20;
+        // 1. Interactive Petal Falling Particle Engine
+        const canvas = document.getElementById('petal-canvas');
+        const ctx = canvas.getContext('2d');
 
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            
-            // Random styling
-            const size = Math.random() * 15 + 5;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.left = `${Math.random() * 100}vw`;
-            particle.style.top = `${Math.random() * 100 + 100}vh`; // Start below screen
-            
-            // Random animation delay and duration
-            particle.style.animationDuration = `${Math.random() * 15 + 10}s`;
-            particle.style.animationDelay = `${Math.random() * 8}s`;
-            
-            particleContainer.appendChild(particle);
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        class Petal {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * -height;
+                this.size = Math.random() * 8 + 6;
+                this.speedY = Math.random() * 1.5 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.opacity = Math.random() * 0.5 + 0.3;
+                this.rotation = Math.random() * Math.PI;
+                this.rotationSpeed = Math.random() * 0.02 - 0.01;
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX + Math.sin(this.y * 0.01) * 0.5;
+                this.rotation += this.rotationSpeed;
+
+                if (this.y > height) {
+                    this.y = -20;
+                    this.x = Math.random() * width;
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                ctx.fillStyle = `rgba(255, 182, 193, ${this.opacity})`; // Soft Pastel Pink
+                ctx.beginPath();
+                // Draw leaf shape
+                ctx.ellipse(0, 0, this.size, this.size / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
         }
 
-        // Database for the 6 assignments
-        const taskDatabase = {
+        const petals = [];
+        for (let i = 0; i < 40; i++) {
+            petals.push(new Petal());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            petals.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // 2. Custom cursor sparkles on movement
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() < 0.15) { // Reduce density
+                const dot = document.createElement('div');
+                dot.className = 'sparkle-dot';
+                dot.style.top = e.clientY + 'px';
+                dot.style.left = e.clientX + 'px';
+                
+                // Random neon cyan or primary pink color
+                const colors = ['#ffd3e8', '#a5f3fc', '#e2d5f8'];
+                dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                document.body.appendChild(dot);
+                setTimeout(() => dot.remove(), 800);
+            }
+        });
+
+        // 3. Scroll Visibility Animation (Intersection Observer)
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        sections.forEach(s => observer.observe(s));
+
+        // 4. Content Storage and Drawer Controller
+        const taskData = {
             task1: {
-                title: "BÀI TẬP 1 | Sắp xếp tệp tin & Quản trị hệ thống dữ liệu",
-                badge: "Hệ thống máy tính & Windows Explorer",
-                badgeColor: "rose-400",
-                description: `
-                    <div class="flex flex-col gap-6">
-                        <p class="text-gray-300">
-                            Với vai trò là một sinh viên ngoại ngữ phải xử lý khối lượng lớn tài liệu học thuật số, mình hiểu rõ việc tổ chức lưu trữ lộn xộn sẽ tốn thời gian như thế nào. Ở bài thực hành đầu tiên, mình đã chuẩn hóa cách đặt tên và cấu trúc cây thư mục môn học theo tiêu chuẩn vàng.
-                        </p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/5 p-6 rounded-2xl border border-white/10">
-                            <div>
-                                <h4 class="font-heading text-lg font-bold mb-2 text-rose-400"><i class="fa-solid fa-code-branch mr-2"></i>Các bước mình thực hiện:</h4>
-                                <ul class="list-disc pl-5 text-sm text-gray-300 flex flex-col gap-2">
-                                    <li>Tạo thư mục chính <b>ThucHanh_LeThuyLinh</b> trên ổ đĩa học tập.</li>
-                                    <li>Khởi tạo file ghi chú ban đầu mang tên <b>GhiChu.txt</b>, sau đó đổi tên thành <b>GhiChuQuanTrong.txt</b> để tăng nhận diện.</li>
-                                    <li>Tạo thư mục con <b>TaiLieu</b> để phân cấp.</li>
-                                    <li>Thực hiện thao tác Cut & Paste để di chuyển an toàn file <b>DiChuyen.txt</b> mà không làm hỏng đường dẫn gốc.</li>
-                                    <li>Thử nghiệm tính năng phục hồi dữ liệu bằng cách xóa file <b>GhiChuQuanTrong.txt</b> rồi "cứu nguy" khôi phục nó từ Recycle Bin.</li>
-                                </ul>
-                            </div>
-                            <div class="flex flex-col justify-center">
-                                <h4 class="font-heading text-lg font-bold mb-2 text-rose-400"><i class="fa-solid fa-lightbulb mr-2"></i>Bài học đắt giá:</h4>
-                                <p class="text-sm text-gray-300 leading-relaxed">
-                                    "Không có tệp tin nào bị thất lạc khi bạn có một tư duy hệ thống." Việc đặt tên file rõ ràng, không chứa ký tự đặc biệt, phân cấp khoa học giúp mình tiết kiệm tối đa thời gian tìm kiếm bài học, hỗ trợ quá trình ôn tập và tự học cực kỳ hiệu quả sau này.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                title: "Task 1: Thao tác & Quản lý Tệp tin",
+                badge: "Học tập số",
+                html: `
+                    <p>Trong thời đại số hóa, việc xây dựng và duy trì một không gian làm việc số ngăn nắp chính là những bước đi đầu tiên của sự chuyên nghiệp. Bài tập này đã giúp mình rèn luyện tư duy quản lý thông tin một cách có hệ thống ngay từ những thư mục máy tính nhỏ nhất.</p>
+                    <blockquote>"Quản lý tệp tin khoa học không đơn giản chỉ là lưu trữ, đó là nền tảng tối ưu hóa thời gian và năng lực làm việc lâu dài."</blockquote>
+                    <h3>Quá trình Thực Hiện</h3>
+                    <p>Mình tiến hành khởi tạo một cấu trúc thư mục quy chuẩn trên ổ đĩa máy tính cá nhân mang tên <strong>ThucHanh_LeThuyLinh</strong>. Tại đây, mình xây dựng tệp văn bản <strong>GhiChu.txt</strong>, thực hiện đổi tên thành <strong>GhiChuQuanTrong.txt</strong> để phân biệt ưu tiên của dữ liệu.</p>
+                    <p>Tiếp theo, mình tạo thư mục con <strong>TaiLieu</strong>, thực hiện các thao tác di chuyển tệp tin (Cut), sao chép tệp tin (Copy & Paste) của các tệp thực hành thiết yếu như <strong>DiChuyen.txt</strong>. Đồng thời, mình làm quen với quy trình xóa tạm thời (Delete) đưa vào Thùng rác (Recycle Bin), khôi phục dữ liệu (Restore), và quy trình xóa vĩnh viễn (Shift + Delete) không qua Thùng rác khi cần giải phóng không gian số an toàn.</p>
+                    <h3>Bài học Rút Ra</h3>
+                    <ul>
+                        <li>Hình thành thói quen đặt tên tệp tin nhất quán, khoa học, dễ dàng định vị khi khối lượng công việc ngày càng tăng.</li>
+                        <li>Hiểu rõ cơ chế quản lý vòng đời tệp tin để tránh mất mát dữ liệu học tập quan trọng.</li>
+                    </ul>
                 `
             },
             task2: {
-                title: "BÀI TẬP 2 | Khai thác thông tin & Đánh giá dữ liệu học thuật",
-                badge: "Second Language Acquisition (SLA) & NLP/AI integration",
-                badgeColor: "amber-400",
-                description: `
-                    <div class="flex flex-col gap-6">
-                        <p class="text-gray-300">
-                            Là một ULISer, nghiên cứu khoa học và kỹ năng đọc hiểu chuyên sâu là điều kiện bắt buộc. Trong bài tập này, mình đã tiến hành đánh giá nghiêm ngặt về độ tin cậy, phương pháp luận và tính cập nhật của 12 công trình nghiên cứu Thụ đắc ngôn ngữ thứ hai (SLA) tiêu biểu nhất thế giới.
-                        </p>
-                        <div class="glass-card p-6 rounded-2xl border border-amber-400/20 flex flex-col gap-4">
-                            <h4 class="font-heading text-lg font-bold text-amber-400"><i class="fa-solid fa-book-open-reader mr-2"></i>Các công trình mình đã phân tích và phản biện:</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-gray-300">
-                                <div class="bg-white/5 p-3 rounded-lg"><b>1. S.Krashen (1985)</b>: Thuyết Đầu Vào (Input Hypothesis) kinh điển nhưng còn thiếu thực nghiệm chặt chẽ để đo lường.</div>
-                                <div class="bg-white/5 p-3 rounded-lg"><b>2. Michael Long (1996)</b>: Thuyết Tương Tác (Interaction Hypothesis) kết hợp dữ liệu thực chứng đầy thuyết phục.</div>
-                                <div class="bg-white/5 p-3 rounded-lg"><b>3. Gass & Mackey (2007)</b>: Input, Interaction & Output - sự cân bằng hoàn hảo giữa học thuật và ứng dụng.</div>
-                                <div class="bg-white/5 p-3 rounded-lg"><b>4. Schwartz & Sprouse (1996)</b>: Mô hình Full Transfer/Full Access - lý thuyết vững chắc về ngữ pháp tạo sinh.</div>
-                                <div class="bg-white/5 p-3 rounded-lg"><b>5. Slabakova (2002/2003)</b>: Nghiên cứu chuyên sâu về ngữ nghĩa và cú pháp (tense and aspect) trong SLA.</div>
-                                <div class="bg-white/5 p-3 rounded-lg"><b>6. Yadavalli et al. (2023)</b>: Modeling SLA với mô hình ngôn ngữ lớn <b>BERT</b> - Cú hích AI cực kỳ thời sự!</div>
-                            </div>
-                            <p class="text-sm text-gray-300 mt-2">
-                                Mình cũng đi sâu đánh giá sách nhập môn của <b>Saville-Troike (2012)</b>, <b>Lightbown & Spada (2013)</b>, <b>Larsen-Freeman (1991)</b>, <b>Rod Ellis (1997)</b>, và <b>Jürgen Meisel (2011)</b>. Nhờ vậy, mình hiểu được cách các lý thuyết giao thoa với Thần kinh học, Khoa học nhận thức và Trí tuệ nhân tạo (NLP).
-                            </p>
-                        </div>
-                    </div>
+                title: "Task 2: Tìm kiếm & Đánh giá Học thuật",
+                badge: "Nghiên cứu khoa học",
+                html: `
+                    <p>Đối với một sinh viên Ngôn ngữ học, việc đánh giá độ tin cậy và tính cập nhật của nguồn tài liệu là kỹ năng sống còn. Bài tập này đặt ra thử thách phân tích sâu sắc các lý thuyết thụ đắc ngôn ngữ thứ hai (SLA) từ cổ điển đến hiện đại.</p>
+                    <h3>Tổng quan phân tích tài liệu học thuật</h3>
+                    <p>Mình đã tiến hành hệ thống hóa và bình luận 12 nguồn tài liệu uy tín trải dài qua hơn 3 thập kỷ nghiên cứu học thuật:</p>
+                    <ul>
+                        <li><strong>Thuyết Thụ đắc Ngôn ngữ Cổ điển:</strong> Nghiên cứu phê phán sâu sắc lý thuyết <em>Input Hypothesis</em> của Stephen Krashen (1985) và <em>Interaction Hypothesis</em> của Michael Long (1996) được xuất bản bởi các nhà xuất bản hàng đầu như Longman và Academic Press. Những công trình này đóng vai trò xây dựng cơ sở lý thuyết vững chắc nhưng có điểm yếu là thiếu các kiểm chứng thực nghiệm đo lường mang tính khái quát cao.</li>
+                        <li><strong>Mô hình Tương tác & Đầu ra:</strong> Nghiên cứu hệ thống của Susan Gass & Alison Mackey (2007) về Input, Interaction, và Output trong SLA, được đánh giá là một chuyên khảo đáng tin cậy giúp kết nối chặt chẽ giữa lý thuyết và bằng chứng thực nghiệm rõ ràng.</li>
+                        <li><strong>Thần kinh học & Trí tuệ Nhân tạo:</strong> So sánh các mô hình cổ điển với mô hình xử lý ngôn ngữ hiện đại của Yadavalli (2023) - <em>"Modeling Second Language Acquisition with BERT"</em>. Đây là một bước đột phá lớn khi ứng dụng mô hình học máy BERT để mô phỏng quá trình tiếp thu ngôn ngữ, phản ánh xu hướng liên ngành giữa ngôn ngữ học tính toán và AI.</li>
+                    </ul>
+                    <h3>Kết Luận Sư Phạm</h3>
+                    <p>Các tài liệu kinh điển dù đã xuất bản từ lâu (như Krashen hay Long) vẫn giữ nguyên giá trị cốt lõi để xây dựng nền tảng lý thuyết, nhưng bắt buộc cần được đối chiếu và kết hợp với các nghiên cứu thực nghiệm công nghệ mới hiện đại để đảm bảo tính thời sự, khách quan và đa chiều trong giảng dạy học thuật.</p>
                 `
             },
             task3: {
-                title: "BÀI TẬP 3 | Nghệ thuật Prompt Engineering & Thiết kế SMART-Prompt",
-                badge: "Generative AI & SMART Framework",
-                badgeColor: "emerald-400",
-                description: `
-                    <div class="flex flex-col gap-6">
-                        <p class="text-gray-300">
-                            AI không tự nhiên thông minh, nó chỉ phản hồi dựa trên những gì chúng ta ra lệnh. Mình đã thực hiện thử nghiệm so sánh 3 phiên bản Prompt (Cơ bản, Cải tiến, Nâng cao) để hướng dẫn AI thực hiện các tác vụ học thuật khó như tóm tắt tác phẩm chính trị và triết học <i>The Communist Manifesto (Karl Marx & Friedrich Engels)</i>.
-                        </p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/5 p-6 rounded-2xl border border-white/10">
-                            <div>
-                                <h4 class="font-heading text-lg font-bold mb-2 text-emerald-400"><i class="fa-solid fa-bullseye mr-2"></i>Công thức SMART-Prompt mình đúc rút:</h4>
-                                <ul class="list-none pl-0 text-sm text-gray-300 flex flex-col gap-3">
-                                    <li><b>S - Specific</b>: Xác định rõ nhiệm vụ (ví dụ: Giải thích khái niệm "Chủ nghĩa duy vật lịch sử").</li>
-                                    <li><b>M - Meaningful Context</b>: Cung cấp bối cảnh triết học Mác-Lênin rõ ràng.</li>
-                                    <li><b>A - Audience</b>: Xác định người đọc là sinh viên năm nhất ngoại ngữ.</li>
-                                    <li><b>R - Role</b>: Gán vai trò "Giảng viên đại học uyên bác, dễ hiểu".</li>
-                                    <li><b>T - Task Structure</b>: Chia nhỏ nhiệm vụ thành từng bước từ định nghĩa, nguồn gốc đến liên hệ thực tế (Ví dụ: tác động của AI đến nền tảng kinh tế xã hội hiện đại).</li>
-                                </ul>
-                            </div>
-                            <div class="flex flex-col justify-center bg-emerald-400/5 p-4 rounded-xl border border-emerald-400/20">
-                                <h4 class="font-heading text-lg font-bold mb-2 text-emerald-400"><i class="fa-solid fa-graduation-cap mr-2"></i>Kết quả thực nghiệm:</h4>
-                                <p class="text-sm text-gray-300 leading-relaxed">
-                                    Khi áp dụng SMART-Prompt, đầu ra của AI không còn chung chung mà trở nên cực kỳ sâu sắc, có liên kết logic chặt chẽ, đưa ra các câu hỏi ôn tập từ mức độ Nhận biết, Thông hiểu đến Vận dụng cao, đồng thời giải thích rõ ràng các thuật ngữ triết học trừu tượng.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                title: "Task 3: Viết Prompt hiệu quả cho Học tập",
+                badge: "Kỹ năng Prompting",
+                html: `
+                    <p>Prompt Engineering (Kỹ nghệ tạo câu lệnh) không đơn thuần là việc "hỏi han" AI, mà đó là nghệ thuật lập trình bằng ngôn ngữ tự nhiên để định hướng một mô hình AI tạo ra câu trả lời xuất sắc nhất.</p>
+                    <blockquote>"Sức mạnh của trí tuệ nhân tạo phụ thuộc hoàn toàn vào chiều sâu tư duy của người đặt câu hỏi."</blockquote>
+                    <h3>Công thức SMART-Prompt</h3>
+                    <p>Mình đã phát triển thành công quy chuẩn <strong>SMART-Prompt</strong> để tối ưu hóa đầu ra cho các tác vụ học tập học thuật phức tạp:</p>
+                    <ol>
+                        <li><strong>S - Specific:</strong> Nhiệm vụ rõ ràng, cụ thể.</li>
+                        <li><strong>M - Meaningful Context:</strong> Cung cấp bối cảnh và giới hạn phạm vi nghiên cứu đầy đủ.</li>
+                        <li><strong>A - Audience:</strong> Chỉ định rõ đối tượng người đọc hướng đến.</li>
+                        <li><strong>R - Role:</strong> Gán vai trò chuyên gia thích hợp cho AI (ví dụ: Giảng viên đại học, nhà nghiên cứu...).</li>
+                        <li><strong>T - Task Structure:</strong> Chia nhỏ nhiệm vụ phức tạp thành nhiều bước rõ ràng (Chain-of-Thought).</li>
+                    </ol>
+                    <h3>Ứng Dụng Thực Nghiệm</h3>
+                    <p>Mình đã thử nghiệm áp dụng công thức này trên các tác vụ phân tích triết học chính trị khó như tóm tắt tác phẩm <em>"The Communist Manifesto"</em> (Karl Marx & Friedrich Engels, 1848) và giải thích khái niệm phức tạp <em>"Chủ nghĩa duy vật lịch sử"</em>.</p>
+                    <p>Kết quả chứng minh: các Prompt nâng cao (sử dụng Role Prompting và Output Constraints) tạo ra cấu trúc phân tích mạch lạc, có ví dụ minh họa trực quan phong phú và đạt chất lượng học thuật cao hơn gấp nhiều lần so với các prompt cơ bản thông thường.</p>
                 `
             },
             task4: {
-                title: "BÀI TẬP 4 | Làm việc nhóm và Hợp tác hiệu quả trong Môi trường số",
-                badge: "Trello, Google Workspace & Microsoft Teams",
-                badgeColor: "cyan-400",
-                description: `
-                    <div class="flex flex-col gap-6">
-                        <p class="text-gray-300">
-                            Trong kỷ nguyên số, khả năng làm việc từ xa và hợp tác trực tuyến là kỹ năng sống còn. Nhóm chúng mình đã phối hợp hoàn thiện dự án nghiên cứu <i>“Ứng dụng Trí tuệ nhân tạo (AI) trong đời sống hiện đại”</i> chỉ trong 1 tuần nhờ áp dụng các bộ công cụ số chuyên nghiệp.
-                        </p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/5 p-6 rounded-2xl border border-white/10">
-                            <div>
-                                <h4 class="font-heading text-lg font-bold mb-2 text-cyan-400"><i class="fa-solid fa-laptop-code mr-2"></i>Tổ chức công cụ & Phân vai:</h4>
-                                <ul class="list-disc pl-5 text-sm text-gray-300 flex flex-col gap-2">
-                                    <li><b>Trello</b>: Quản lý task theo mô hình Kanban (To Do – Doing – Done) để đồng bộ tiến độ thời gian thực, tránh trễ hạn.</li>
-                                    <li><b>Google Docs</b>: Nơi nhóm cùng soạn thảo bài nghiên cứu, phản biện chéo qua tính năng Comment. Mình đảm nhận viết phần "AI in Education".</li>
-                                    <li><b>Google Drive</b>: Lưu trữ và phân loại các file nghiên cứu (PDF, Images, References) khoa học.</li>
-                                    <li><b>MS Teams/Discord</b>: Giao tiếp, họp nhanh để giải quyết xung đột ý tưởng.</li>
-                                </ul>
-                            </div>
-                            <div class="flex flex-col justify-center">
-                                <h4 class="font-heading text-lg font-bold mb-2 text-cyan-400"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Vượt qua thách thức:</h4>
-                                <p class="text-sm text-gray-300 leading-relaxed">
-                                    Nhóm từng gặp khó khăn khi nội dung viết trên Docs bị chồng chéo và lệch văn phong (academic vs informal). Giải pháp của mình là chủ động tạo một outline học thuật chi tiết trước khi phân chia viết, lọc nguồn uy tín (Google Scholar, IBM, OpenAI) và thống nhất tiêu chí chọn tài liệu ngay từ đầu.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                title: "Task 4: Công cụ Hợp tác trực tuyến",
+                badge: "Làm việc nhóm số",
+                html: `
+                    <p>Học tập số không phải là hành trình đơn độc. Việc phối hợp và làm việc nhóm hiệu quả trên không gian đám mây chính là chìa khóa giúp dự án "Ứng dụng Trí tuệ nhân tạo trong đời sống hiện đại" của chúng mình gặt hái thành công lớn.</p>
+                    <h3>Giải pháp phối hợp số của chúng mình</h3>
+                    <p>Để tối ưu hóa năng suất và giảm thiểu xung đột dữ liệu, nhóm mình đã phối hợp đồng bộ 4 công cụ chính:</p>
+                    <ul>
+                        <li><strong>Trello (Quản lý dự án):</strong> Áp dụng mô hình Kanban (To Do - Doing - Done) giúp gán nhiệm vụ rõ ràng cho từng người, theo dõi thời gian thực, giảm nguy cơ trễ deadline.</li>
+                        <li><strong>Google Docs (Soạn thảo cộng tác):</strong> Viết báo cáo phân tích "AI in Education" đồng thời. Chúng mình giải quyết xung đột chồng chéo nội dung và phong cách viết không nhất quán bằng cách xây dựng dàn ý (outline) chi tiết và thảo luận thông qua hệ thống comment.</li>
+                        <li><strong>Google Drive (Lưu trữ):</strong> Tạo cấu trúc thư mục tối ưu gồm AI Research Papers, Images & References, và Final Report giúp quản lý tài liệu ngăn nắp.</li>
+                        <li><strong>Microsoft Teams / Discord:</strong> Kênh liên lạc và họp trực tuyến chính giúp trao đổi nhanh chóng, giải thích thuật ngữ chuyên môn ngay lập tức.</li>
+                    </ul>
+                    <h3>Kết quả đạt được</h3>
+                    <p>Dự án hoàn thành đúng thời hạn một tuần với độ đồng bộ học thuật cao, giúp chúng mình tích lũy kỹ năng nghiên cứu nền tảng và phát triển năng lực hợp tác chuyên nghiệp trong môi trường ảo thực tế.</p>
                 `
             },
             task5: {
-                title: "BÀI TẬP 5 | Sáng tạo nội dung đa phương tiện với GenAI làm Trợ lý",
-                badge: "ChatGPT, Stable Diffusion & Canva AI",
-                badgeColor: "purple-400",
-                description: `
-                    <div class="flex flex-col gap-6">
-                        <p class="text-gray-300">
-                            Đây là bài tập mình hào hứng nhất! Mình đã hóa thân thành một nhà sáng tạo nội dung số thực thụ, tự tay thiết kế một bài thuyết trình chuyên nghiệp 10 slide mang chủ đề: <i>"Trí tuệ nhân tạo trong đời sống hằng ngày - AI đang thay đổi cách chúng ta sống như thế nào?"</i> bằng cách phối hợp 3 công cụ GenAI đỉnh cao.
-                        </p>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-300">
-                            <div class="bg-white/5 p-6 rounded-2xl border border-white/10 flex flex-col gap-2">
-                                <div class="w-10 h-10 rounded-xl bg-purple-400/20 text-purple-400 flex items-center justify-center text-lg"><i class="fa-solid fa-brain"></i></div>
-                                <b>1. ChatGPT (Nội dung)</b>
-                                <p class="text-xs text-gray-400">Đưa ra dàn ý logic, soạn thảo kịch bản thuyết trình mượt mà, sâu sắc về AI trong giao tiếp, giáo dục, mua sắm và y tế.</p>
-                            </div>
-                            <div class="bg-white/5 p-6 rounded-2xl border border-white/10 flex flex-col gap-2">
-                                <div class="w-10 h-10 rounded-xl bg-purple-400/20 text-purple-400 flex items-center justify-center text-lg"><i class="fa-solid fa-image"></i></div>
-                                <b>2. Stable Diffusion (Hình ảnh)</b>
-                                <p class="text-xs text-gray-400">Vẽ tranh minh họa 3D/Vector độc nhất vô nhị. Mình đã viết prompt chi tiết tạo cảnh thành phố tương lai rực rỡ lúc hoàng hôn, lớp học số tương tác và trợ lý y tế thông minh.</p>
-                            </div>
-                            <div class="bg-white/5 p-6 rounded-2xl border border-white/10 flex flex-col gap-2">
-                                <div class="w-10 h-10 rounded-xl bg-purple-400/20 text-purple-400 flex items-center justify-center text-lg"><i class="fa-solid fa-file-powerpoint"></i></div>
-                                <b>3. Canva AI (Layout Slide)</b>
-                                <p class="text-xs text-gray-400">Tự động thiết kế slide tối giản, phối tone màu công nghệ hiện đại (Xanh dương, Tím, Cyan) với font chữ Poppins thời thượng.</p>
-                            </div>
-                        </div>
-                        <div class="bg-purple-400/5 p-6 rounded-2xl border border-purple-400/20">
-                            <h4 class="font-heading text-lg font-bold mb-2 text-purple-400"><i class="fa-solid fa-user-check mr-2"></i>Dấu ấn cá nhân của Linh:</h4>
-                            <p class="text-sm text-gray-300 leading-relaxed">
-                                Mình không "copy-paste" mù quáng! Sau khi AI trả kết quả, mình đã rà soát tính chính xác, viết lại nội dung theo giọng văn tự nhiên của bản thân, sắp xếp lại bố cục, tinh chỉnh màu sắc để slide vừa có chiều sâu học thuật, vừa mang đậm tư duy thẩm mỹ cá nhân.
-                            </p>
-                        </div>
-                    </div>
+                title: "Task 5: Đồng sáng tạo với AI tạo sinh",
+                badge: "Trí tuệ nhân tạo",
+                html: `
+                    <p>Bài tập này là một trải nghiệm đột phá khi mình học cách đóng vai trò là "Tổng đạo diễn" phối hợp 3 công cụ AI tạo sinh khác nhau để tạo ra một sản phẩm truyền thông thị học thuật hoàn hảo.</p>
+                    <h3>Quy trình Đồng Sáng Tạo</h3>
+                    <ol>
+                        <li><strong>Khởi tạo ý tưởng với ChatGPT:</strong> Mình sử dụng ChatGPT để phân tích cấu trúc chủ đề, đề xuất dàn bài chi tiết từ mở đầu đến kết luận và viết nội dung phong cách học thuật nhẹ cho sinh viên về "AI trong đời sống hằng ngày" dài khoảng 2000 từ.</li>
+                        <li><strong>Sáng tạo hình ảnh với Stable Diffusion:</strong> Thay vì tìm kiếm hình ảnh có sẵn trên mạng, mình thiết kế các câu lệnh chi tiết (prompt) để tạo hình vẽ 3D sắc nét độc nhất về <em>Thành phố tương lai rực rỡ dưới hoàng hôn</em>, <em>Sinh viên tự học với trợ lý AI holographic</em>, và <em>Bác sĩ chẩn đoán thông minh trong phòng y tế</em>.</li>
+                        <li><strong>Thiết kế Slides với Canva AI:</strong> Mình nạp nội dung và các hình ảnh đã tạo vào Canva AI với yêu cầu phong cách công nghệ tối giản hiện đại (Premium Technology Minimalist), phối màu xanh cyan, hồng và tím mộng mơ để tạo ra một slide thuyết trình 10 trang cực kỳ bắt mắt.</li>
+                    </ol>
+                    blockquote>"Sự kết hợp ăn ý giữa khả năng tạo sinh nhanh chóng của AI và định hướng thẩm mỹ sâu sắc của con người đã mang lại một sản phẩm chất lượng cao, đậm dấu ấn cá nhân."</blockquote>
                 `
             },
             task6: {
-                title: "BÀI TẬP 6 | Sử dụng AI có Trách nhiệm & Bảo vệ Đạo đức Học thuật",
-                badge: "AI Ethics & Academic Integrity in Higher Education",
-                badgeColor: "pink-400",
-                description: `
-                    <div class="flex flex-col gap-6">
-                        <p class="text-gray-300">
-                            Bài học cuối cùng nhưng là quan trọng nhất: Làm sao để dùng AI bứt phá kết quả học tập mà không vi phạm đạo đức học thuật? Mình đã phân tích sâu sắc chính sách tích hợp AI của trường ngoại ngữ và tự tay xây dựng một hệ thống nguyên tắc hành xử đạo đức cho riêng mình.
-                        </p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/5 p-6 rounded-2xl border border-white/10">
-                            <div>
-                                <h4 class="font-heading text-lg font-bold mb-3 text-pink-400"><i class="fa-solid fa-list-check mr-2"></i>7 Nguyên tắc ứng xử AI của Thùy Linh:</h4>
-                                <ul class="list-decimal pl-5 text-xs text-gray-300 flex flex-col gap-2">
-                                    <li><b>Không thay thế tư duy</b>: Chỉ dùng AI hỗ trợ tìm ý tưởng, không chép nguyên văn.</li>
-                                    <li><b>Luôn kiểm chứng</b>: Đối chiếu thông tin AI cung cấp với Google Scholar, Scopus.</li>
-                                    <li><b>Luôn minh bạch</b>: Khai báo rõ ràng phần nội dung có sự hỗ trợ của AI.</li>
-                                    <li><b>Tôn trọng bản quyền</b>: Trích dẫn nguồn tài liệu tham khảo chuẩn chỉnh.</li>
-                                    <li><b>Bảo vệ dữ liệu cá nhân</b>: Không nạp thông tin nhạy cảm vào AI trực tuyến.</li>
-                                    <li><b>Duy trì tự học</b>: Không ỷ lại công cụ, kiên trì rèn luyện kỹ năng tự thân.</li>
-                                    <li><b>Sử dụng AI có đạo đức</b>: Tuyệt đối không dùng AI để gian lận, đạo văn.</li>
-                                </ul>
-                            </div>
-                            <div class="flex flex-col gap-4">
-                                <h4 class="font-heading text-lg font-bold text-pink-400"><i class="fa-solid fa-heart-pulse mr-2"></i>Bổ sung bài luận thực tế:</h4>
-                                <p class="text-xs text-gray-300 leading-relaxed">
-                                    Mình đã nhờ AI hỗ trợ lên ý tưởng cho một bài luận 600 từ về đề tài <i>"Tại sao sức khỏe tinh thần lại trở thành mối lo lớn của sinh viên đại học?"</i>. Quá trình này giúp mình thấy rõ ranh giới giữa việc dùng công nghệ như một "Trợ lý thảo luận" phản tư với việc lạm dụng dẫn đến lười suy nghĩ và xói mòn tư duy ngôn ngữ độc lập.
-                                </p>
-                                <div class="bg-pink-400/10 p-4 rounded-xl border border-pink-400/20 text-xs text-center font-bold text-pink-300">
-                                    🌸 Mình cũng đã thiết kế một Infographic minh họa cực đẹp cho chủ đề này!
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                title: "Task 6: AI có trách nhiệm trong học thuật",
+                badge: "Đạo đức học thuật",
+                html: `
+                    <p>Là một sinh viên thế hệ mới, mình nhận thức sâu sắc rằng AI là một công cụ hỗ trợ tuyệt vời, nhưng ranh giới giữa việc "hỗ trợ hợp lý" và "gian lận học thuật" là vô cùng mong manh.</p>
+                    <h3>Dự Án Nghiên Cứu Minh Họa</h3>
+                    <p>Mình đã thực hiện một bài nghiên cứu chính sách của trường Đại học Ngoại ngữ về việc tích hợp AI. Nhà trường chủ trương không cấm đoán, mà chủ động đào tạo năng lực số cho cả giảng viên và sinh viên thông qua các chuyên đề thiết thực như <em>AI Companion</em>.</p>
+                    <p>Ứng dụng thực tế, mình tiến hành lập dàn ý chi tiết cho bài luận tiếng Anh về chủ đề: <em>"Why has mental health become a major concern for university students, and what can universities do to address it?"</em></p>
+                    <h3>Quy Trình Làm Việc Trách Nhiệm</h3>
+                    <p>Mình sử dụng ChatGPT để đóng vai trò trợ lý học thuật hỗ trợ phân tích đề, gợi ý 8 nguyên nhân cốt lõi (áp lực đồng trang lứa, mạng xã hội, lo âu nghề nghiệp...) và các giải pháp sư phạm tương ứng. Tuy nhiên, toàn bộ quá trình phát triển luận điểm, viết chi tiết, đánh giá và cam kết liêm chính học thuật đều do bản thân mình tự thực hiện.</p>
+                    <p>Trải nghiệm này củng cố niềm tin của mình: <strong>AI không làm giảm giá trị của con người, nó chỉ đòi hỏi chúng ta nâng cao năng lực phản tư và tư duy độc lập lên một tầm cao mới.</strong></p>
                 `
             }
         };
 
-        // Function to expand/collapse assignment details
-        function toggleTask(taskId) {
-            const detailsBox = document.getElementById('details-box');
-            const detailsContent = document.getElementById('details-content');
-            const taskData = taskDatabase[taskId];
-
-            if (!taskData) return;
-
-            // Render details using dreamy layout matching student style
-            detailsContent.innerHTML = `
-                <div class="flex flex-col gap-4">
-                    <div class="flex items-center gap-3">
-                        <span class="px-4 py-1 rounded-full text-xs font-bold bg-${taskData.badgeColor}/20 text-${taskData.badgeColor} border border-${taskData.badgeColor}/30">
-                            ${taskData.badge}
-                        </span>
-                    </div>
-                    <h3 class="font-heading text-2xl sm:text-3xl font-bold tracking-tight holo-text">${taskData.title}</h3>
-                    <div class="w-full h-[1px] bg-white/10 my-2"></div>
-                    <div class="text-sm sm:text-base leading-relaxed text-gray-200">
-                        ${taskData.description}
-                    </div>
-                </div>
-            `;
-
-            // Scroll to view smoothly
-            detailsBox.classList.remove('hidden');
-            detailsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        function openDrawer(taskId) {
+            const data = taskData[taskId];
+            if (data) {
+                const content = document.getElementById('drawer-content');
+                content.innerHTML = `
+                    <span class="task-badge">${data.badge}</span>
+                    <h2>${data.title}</h2>
+                    ${data.html}
+                `;
+                document.getElementById('drawer-overlay').classList.add('active');
+                document.getElementById('drawer').classList.add('active');
+                document.body.style.overflow = 'hidden'; // Lock scrolling
+            }
         }
 
-        function closeDetails() {
-            const detailsBox = document.getElementById('details-box');
-            detailsBox.classList.add('hidden');
+        function closeDrawer() {
+            document.getElementById('drawer-overlay').classList.remove('active');
+            document.getElementById('drawer').classList.remove('active');
+            document.body.style.overflow = 'auto'; // Unlock scrolling
         }
+
+        // 5. Active Link Highlight on Scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(sec => {
+                const sectionTop = sec.offsetTop;
+                const sectionHeight = sec.clientHeight;
+                if (pageYOffset >= (sectionTop - 250)) {
+                    current = sec.getAttribute('id');
+                }
+            });
+
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
     </script>
 </body>
 </html>
